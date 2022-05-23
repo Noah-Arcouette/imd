@@ -1,0 +1,16 @@
+- [ ] Parse Configuration
+- [ ] Parse Arguments
+- [ ] Read File
+- [ ] Separate Into Lines
+- [ ] Style Lines
+    - [ ] Headers
+    - [ ] Lists
+    - [ ] Check Lists
+    - [ ] Tab Lists
+    - [ ] Links
+    - [ ] Under Lines
+    - [ ] Code Sections
+    - [ ] Syntax
+- [ ] Add Decorations
+- [ ] Concatenate Array
+- [ ] Print / Dump to File / Less
