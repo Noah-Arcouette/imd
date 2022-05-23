@@ -8,6 +8,7 @@ bin/
 
 test/
 *.test
+./inc/conf.h
 
 # Compressed
 

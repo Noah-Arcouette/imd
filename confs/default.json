@@ -1,0 +1,16 @@
+{
+  "error": {
+    "fg": "red",
+    "bg": "default",
+    "styles": "bold"
+  },
+  "default": {
+    "fg": "default",
+    "bg": "default"
+  },
+  "highlight": {
+    "fg": "purple",
+    "bg": "default",
+    "styles": "bold"
+  }
+}

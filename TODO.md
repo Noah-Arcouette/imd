@@ -1,6 +1,9 @@
 - [ ] Parse Configuration
 - [ ] Parse Arguments
 - [ ] Read File
+- [ ] Menu
+  - [ ] Open All markdown files
+  - [ ] Key selection
 - [ ] Separate Into Lines
 - [ ] Style Lines
     - [ ] Headers
