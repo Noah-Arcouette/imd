@@ -13,14 +13,13 @@ int main (const int argc, const char** argv)
   // get settings
   struct Settings s = getSet(argc, argv);
 
+  // read file
   char* data = reader(s);
 
   printf("%s", data);
 
+  // free data
   free(data);
-
-  getc(stdin);
-
   free(s.file);
 
   return 0;

@@ -9,8 +9,10 @@
 struct Settings getSet (const int argc, const char** argv)
 {
   struct Settings s;
-  s.file = NULL;
   s.flags = 0;
+
+  s.file = malloc(sizeof("./README.md"));
+  strcpy(s.file, "./README.md");
 
   // get window size
   struct winsize w;
