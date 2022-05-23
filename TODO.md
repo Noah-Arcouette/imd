@@ -1,5 +1,5 @@
 - [x] Parse Configuration ( only default )
-- [ ] Parse Arguments
+- [x] Parse Arguments
 - [ ] Read File
 - [ ] Menu
   - [ ] Open All markdown files

@@ -2,7 +2,7 @@ CC   = gcc -Wall -Wextra -I./inc -O2
 OUT  = ./bin/imd
 
 all: configure ${OUT}
-	${OUT} ./test.md
+	cat ./README.md | ${OUT}
 
 configure:
 	# Make binaries directories
@@ -29,7 +29,7 @@ clean:
 
 # Files
 
-${OUT}: ./obj/main.o ./obj/settings.o
+${OUT}: ./obj/main.o ./obj/settings.o ./obj/reader.o
 	${CC} -o ${OUT} ./obj/*.o
 
 ./obj/main.o: ./src/main.c
@@ -38,6 +38,5 @@ ${OUT}: ./obj/main.o ./obj/settings.o
 ./obj/settings.o: ./src/settings.c
 	${CC} -c -o ./obj/settings.o ./src/settings.c
 
-# User should never run
-test: ./conf.py
-	./conf.py
+./obj/reader.o: ./src/reader.c
+	${CC} -c -o ./obj/reader.o ./src/reader.c

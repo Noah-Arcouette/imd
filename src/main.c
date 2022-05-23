@@ -6,12 +6,20 @@
 #include <string.h>
 #include "conf.h"
 #include "settings.h"
+#include "reader.h"
 
 int main (const int argc, const char** argv)
 {
+  // get settings
   struct Settings s = getSet(argc, argv);
 
-  printf("%s\n", s.file);
+  char* data = reader(s);
+
+  printf("%s", data);
+
+  free(data);
+
+  getc(stdin);
 
   free(s.file);
 
