@@ -1,4 +1,4 @@
-- [ ] Parse Configuration
+- [x] Parse Configuration ( only default )
 - [ ] Parse Arguments
 - [ ] Read File
 - [ ] Menu

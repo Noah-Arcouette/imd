@@ -29,12 +29,14 @@ clean:
 
 # Files
 
-${OUT}: ./obj/main.o
+${OUT}: ./obj/main.o ./obj/settings.o
 	${CC} -o ${OUT} ./obj/*.o
 
 ./obj/main.o: ./src/main.c
 	${CC} -c -o ./obj/main.o ./src/main.c
 
+./obj/settings.o: ./src/settings.c
+	${CC} -c -o ./obj/settings.o ./src/settings.c
 
 # User should never run
 test: ./conf.py
