@@ -7,12 +7,61 @@
 #include "settings.h"
 #include "reader.h"
 
-#define STYLED_HEADER 0b1
-#define STYLED_DONE   0b10
+#define OVERRIDE 0b1
+#define HEADER   0b10
 
 void style (char* data)
 {
-  
+  int flags = 0;
+  unsigned int hcount = 0;
+
+  printf("\x1b[0m" DEF_C);
+
+  for (size_t i = 0; data[i]!=0; i++)
+  {
+    if (!(flags & OVERRIDE))
+    {
+      switch (data[i])
+      {
+        case '#':
+          hcount++;
+          flags |= HEADER;
+
+          continue;
+        default:
+          if (flags & HEADER)
+          {
+            flags |= OVERRIDE;
+
+            if (hcount == 1)
+            {
+              printf(H1_C);
+            }
+            else if (hcount == 2)
+            {
+              printf(H2_C);
+            }
+            else
+            {
+              printf(H3_C);
+            }
+          }
+
+          break;
+      }
+    }
+    else
+    {
+      if (data[i] == '\n')
+      {
+        flags = 0;
+        hcount = 0;
+        printf("\x1b[0m" DEF_C);
+      }
+    }
+
+    printf("%c", data[i]);
+  }
 }
 
 int main (const int argc, const char** argv)

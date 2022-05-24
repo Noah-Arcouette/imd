@@ -41,13 +41,10 @@ class Style:
         self.hidden  = False;
 
     def getColor (self):
-        out = "\\x1b[0";
-
-        if not self.fg == "default":
-            out += ';';
+        out = "\\x1b[";
 
         if self.fg == "default":
-            pass
+            out += "39"
         elif self.fg == "black" or self.fg == "gray":
             out += "30"
         elif self.fg == "bright black" or self.fg == "bright gray":
@@ -85,11 +82,10 @@ class Style:
 
             exit(1);
 
-        if not self.bg == "default":
-            out += ';';
+        out += ';';
 
         if self.bg == "default":
-            pass
+            out += "49"
         elif self.bg == "black" or self.bg == "gray":
             out += "40"
         elif self.bg == "bright black" or self.bg == "bright gray":
