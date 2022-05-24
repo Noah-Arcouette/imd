@@ -15,6 +15,9 @@ def genConf (f):
     h3         = scope(data['h3']);
     list       = scope(data['list']);
     tab_list   = scope(data['tab-list']);
+    alt        = scope(data['alt']);
+    link       = scope(data['link']);
+    brackets   = scope(data['brackets']);
 
     out = "#ifndef __CONF_H__\n#define __CONF_H__\n";
 
@@ -26,6 +29,9 @@ def genConf (f):
     out += h3.gen("h3_c");
     out += list.gen("list_c");
     out += tab_list.gen("tab_list_c");
+    out += alt.gen("alt_c");
+    out += link.gen("link_c");
+    out += brackets.gen("brackets_c");
 
     out += "#endif\n";
 

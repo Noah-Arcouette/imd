@@ -31,5 +31,17 @@
   "tab-list": {
     "fg": "purple",
     "styles": "bold"
+  },
+
+  "brackets": {
+    "styles": "bold"
+  },
+  "alt": {
+    "fg": "red",
+    "styles": "bold"
+  },
+  "link": {
+    "fg": "blue",
+    "styles": "underline"
   }
 }

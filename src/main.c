@@ -11,6 +11,8 @@
 #define HEADER   0b10
 #define LIST     0b100
 #define TAB      0b1000
+#define ALT      0b10000
+#define LINK     0b100000
 
 void style (char* data)
 {
@@ -35,12 +37,25 @@ void style (char* data)
 
           flags |= LIST;
 
+          break;
         case '>':
           printf(TAB_LIST_C);
 
           flags |= TAB;
 
           break;
+        case '[':
+          flags |= ALT | OVERRIDE;
+
+          printf(BRACKETS_C "[\x1b[0m");
+
+          continue;
+        case '(':
+          flags |= LINK | OVERRIDE;
+
+          printf(BRACKETS_C "(\x1b[0m");
+
+          continue;
         case '\n':
           goto newline;
         default:
@@ -71,13 +86,37 @@ void style (char* data)
     }
     else
     {
-      newline:
-        if (data[i] == '\n')
-        {
-          flags = 0;
-          hcount = 0;
-          printf("\x1b[0m" DEF_C);
-        }
+      if (data[i] == ']')
+      {
+        printf(BRACKETS_C "]\x1b[0m");
+
+        flags = 0;
+
+        continue;
+      }
+      else if (data[i] == ')')
+      {
+        printf(BRACKETS_C ")\x1b[0m");
+
+        flags = 0;
+
+        continue;
+      }
+      else if (flags & ALT)
+      {
+        printf(ALT_C);
+      }
+      else if (flags & LINK)
+      {
+        printf(LINK_C);
+      }
+      else if (data[i] == '\n')
+      {
+        newline:
+        flags = 0;
+        hcount = 0;
+        printf("\x1b[0m" DEF_C);
+      }
     }
 
     printf("%c", data[i]);
