@@ -12,5 +12,21 @@
     "fg": "purple",
     "bg": "default",
     "styles": "bold"
+  },
+
+  "h1": {
+    "fg": "blue",
+    "bg": "default",
+    "styles": "bold underline"
+  },
+  "h2": {
+    "fg": "purple",
+    "bg": "default",
+    "styles": "bold underline"
+  },
+  "h3": {
+    "fg": "red",
+    "bg": "default",
+    "styles": "bold underline"
   }
 }

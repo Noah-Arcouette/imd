@@ -3,6 +3,30 @@ from sys import argv
 from os.path import exists
 import json as JSON
 
+def genConf (f):
+    data = f.read();
+    data = JSON.loads(data);
+
+    error      = scope(data['error']);
+    defs       = scope(data['default']);
+    highlight  = scope(data['highlight']);
+    h1         = scope(data['h1']);
+    h2         = scope(data['h2']);
+    h3         = scope(data['h3']);
+
+    out = "#ifndef __CONF_H__\n#define __CONF_H__\n";
+
+    out += error.gen("error_c");
+    out += defs.gen("def_c");
+    out += highlight.gen("highlight_c");
+    out += h1.gen("h1_c");
+    out += h2.gen("h2_c");
+    out += h3.gen("h3_c");
+
+    out += "#endif\n";
+
+    return out;
+
 class Style:
     def __init__ (self):
         self.fg      = "default";
@@ -180,23 +204,27 @@ def scope (section):
 
     return s;
 
-def genConf (f):
-    data = f.read();
-    data = JSON.loads(data);
-
-    error      = scope(data['error']);
-    defs       = scope(data['default']);
-    highlight  = scope(data['highlight']);
-
-    out = "#ifndef __CONF_H__\n#define __CONF_H__\n";
-
-    out += error.gen("error_c");
-    out += defs.gen("def_c");
-    out += highlight.gen("highlight_c");
-
-    out += "#endif\n";
-
-    return out;
+# def genConf (f):
+#     data = f.read();
+#     data = JSON.loads(data);
+#
+#     error      = scope(data['error']);
+#     defs       = scope(data['default']);
+#     highlight  = scope(data['highlight']);
+#     h1         = scope(data['h1']);
+#     h2         = scope(data['h2']);
+#
+#     out = "#ifndef __CONF_H__\n#define __CONF_H__\n";
+#
+#     out += error.gen("error_c");
+#     out += defs.gen("def_c");
+#     out += highlight.gen("highlight_c");
+#     out += h1.gen("h1_c");
+#     out += h2.gen("h2_c");
+#
+#     out += "#endif\n";
+#
+#     return out;
 
 def main ():
     conf = "default"

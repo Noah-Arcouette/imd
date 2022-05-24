@@ -4,9 +4,8 @@
 - [ ] Menu
   - [ ] Open All markdown files
   - [ ] Key selection
-- [ ] Separate Into Lines
-- [ ] Style Lines
-    - [ ] Headers
+- [ ] Style
+    - [x] Headers
     - [ ] Lists
     - [ ] Check Lists
     - [ ] Tab Lists
@@ -14,6 +13,7 @@
     - [ ] Under Lines
     - [ ] Code Sections
     - [ ] Syntax
+- [ ] Separate Into Lines
 - [ ] Add Decorations
 - [ ] Concatenate Array
 - [ ] Print / Dump to File / Less
