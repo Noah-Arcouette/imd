@@ -47,6 +47,7 @@ struct Settings getSet (const int argc, const char** argv)
       else if (!strcmp(argv[i], "--help"))
       {
         s.file = realloc(s.file, sizeof("/etc/imd/man.md"));
+        strcpy(s.file, "/etc/imd/man.md");
       }
       else
       {
@@ -81,6 +82,7 @@ struct Settings getSet (const int argc, const char** argv)
             break;
           case 'h':
             s.file = realloc(s.file, sizeof("/etc/imd/man.md"));
+            strcpy(s.file, "/etc/imd/man.md");
 
             break;
           default:
