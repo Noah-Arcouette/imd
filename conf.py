@@ -18,6 +18,7 @@ def genConf (f):
     alt        = scope(data['alt']);
     link       = scope(data['link']);
     brackets   = scope(data['brackets']);
+    underline  = scope(data['underline']);
 
     out = "#ifndef __CONF_H__\n#define __CONF_H__\n";
 
@@ -32,6 +33,7 @@ def genConf (f):
     out += alt.gen("alt_c");
     out += link.gen("link_c");
     out += brackets.gen("brackets_c");
+    out += underline.gen("underline_c");
 
     out += "#endif\n";
 

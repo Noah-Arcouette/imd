@@ -43,5 +43,10 @@
   "link": {
     "fg": "blue",
     "styles": "underline"
+  },
+
+  "underline": {
+    "fg": "purple",
+    "styles": "bold"
   }
 }

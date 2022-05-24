@@ -7,12 +7,14 @@
 #include "settings.h"
 #include "reader.h"
 
-#define OVERRIDE 0b1
-#define HEADER   0b10
-#define LIST     0b100
-#define TAB      0b1000
-#define ALT      0b10000
-#define LINK     0b100000
+#define OVERRIDE  0b1
+#define HEADER    0b10
+#define LIST      0b100
+#define TAB       0b1000
+#define ALT       0b10000
+#define LINK      0b100000
+#define UNDERLINE 0b1000000
+#define IDDONE    0b10000000
 
 void style (char* data)
 {
@@ -33,9 +35,12 @@ void style (char* data)
 
           continue;
         case '-':
-          printf(LIST_C);
+          if (!(flags & IDDONE))
+          {
+            printf(LIST_C);
 
-          flags |= LIST;
+            flags |= LIST;
+          }
 
           break;
         case '>':
@@ -51,13 +56,29 @@ void style (char* data)
 
           continue;
         case '(':
-          flags |= LINK | OVERRIDE;
+          if (!(flags & IDDONE))
+          {
+            flags |= LINK | OVERRIDE;
 
-          printf(BRACKETS_C "(\x1b[0m");
+            printf(BRACKETS_C "(\x1b[0m");
+          }
 
           continue;
+        case '=':
+          if (!(flags & IDDONE))
+          {
+            printf(UNDERLINE_C);
+
+            flags |= UNDERLINE;
+          }
+
+          break;
         case '\n':
           goto newline;
+        case ' ':
+          break;
+        case '\t':
+          break;
         default:
           if (flags & HEADER)
           {
@@ -80,6 +101,8 @@ void style (char* data)
           {
             printf("\x1b[0m" DEF_C);
           }
+
+          flags |= IDDONE;
 
           break;
       }
