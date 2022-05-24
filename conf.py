@@ -13,6 +13,8 @@ def genConf (f):
     h1         = scope(data['h1']);
     h2         = scope(data['h2']);
     h3         = scope(data['h3']);
+    list       = scope(data['list']);
+    tab_list   = scope(data['tab-list']);
 
     out = "#ifndef __CONF_H__\n#define __CONF_H__\n";
 
@@ -22,6 +24,8 @@ def genConf (f):
     out += h1.gen("h1_c");
     out += h2.gen("h2_c");
     out += h3.gen("h3_c");
+    out += list.gen("list_c");
+    out += tab_list.gen("tab_list_c");
 
     out += "#endif\n";
 

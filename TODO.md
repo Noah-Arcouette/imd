@@ -6,9 +6,9 @@
   - [ ] Key selection
 - [ ] Style
     - [x] Headers
-    - [ ] Lists
+    - [x] Lists
     - [ ] Check Lists
-    - [ ] Tab Lists
+    - [x] Tab Lists
     - [ ] Links
     - [ ] Under Lines
     - [ ] Code Sections

@@ -9,6 +9,8 @@
 
 #define OVERRIDE 0b1
 #define HEADER   0b10
+#define LIST     0b100
+#define TAB      0b1000
 
 void style (char* data)
 {
@@ -28,6 +30,19 @@ void style (char* data)
           flags |= HEADER;
 
           continue;
+        case '-':
+          printf(LIST_C);
+
+          flags |= LIST;
+
+        case '>':
+          printf(TAB_LIST_C);
+
+          flags |= TAB;
+
+          break;
+        case '\n':
+          goto newline;
         default:
           if (flags & HEADER)
           {
@@ -46,18 +61,23 @@ void style (char* data)
               printf(H3_C);
             }
           }
+          else if (flags & LIST || flags & TAB)
+          {
+            printf("\x1b[0m" DEF_C);
+          }
 
           break;
       }
     }
     else
     {
-      if (data[i] == '\n')
-      {
-        flags = 0;
-        hcount = 0;
-        printf("\x1b[0m" DEF_C);
-      }
+      newline:
+        if (data[i] == '\n')
+        {
+          flags = 0;
+          hcount = 0;
+          printf("\x1b[0m" DEF_C);
+        }
     }
 
     printf("%c", data[i]);
