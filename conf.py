@@ -19,6 +19,9 @@ def genConf (f):
     link       = scope(data['link']);
     brackets   = scope(data['brackets']);
     underline  = scope(data['underline']);
+    italic     = scope(data['italic']);
+    bold       = scope(data['bold']);
+    bold_ital  = scope(data['bold-italic']);
 
     out = "#ifndef __CONF_H__\n#define __CONF_H__\n";
 
@@ -34,6 +37,9 @@ def genConf (f):
     out += link.gen("link_c");
     out += brackets.gen("brackets_c");
     out += underline.gen("underline_c");
+    out += italic.gen("italic_c");
+    out += bold.gen("bold_c");
+    out += bold_ital.gen("bold_italic_c");
 
     out += "#endif\n";
 

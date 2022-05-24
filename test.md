@@ -5,11 +5,11 @@
 underline
 =========
 
-*ital*
+*ital* test
 
-**bold**
+**bold** test
 
-***Ital Bold***
+***Ital Bold*** test
 
 `inline highlight`
 

@@ -7,12 +7,15 @@
 - [ ] Style
     - [x] Headers
     - [x] Lists
-    - [ ] Check Lists
+    - [x] Check Lists
     - [x] Tab Lists
     - [x] Links
-    - [ ] Under Lines
+    - [x] Under Lines
     - [ ] Code Sections
     - [ ] Syntax
+    - [x] Italics
+    - [x] Bold
+    - [x] Italics Bold
 - [ ] Separate Into Lines
 - [ ] Add Decorations
 - [ ] Concatenate Array

@@ -48,5 +48,15 @@
   "underline": {
     "fg": "purple",
     "styles": "bold"
+  },
+
+  "italic": {
+    "styles": "italic"
+  },
+  "bold": {
+    "styles": "bold"
+  },
+  "bold-italic": {
+    "styles": "italic bold"
   }
 }

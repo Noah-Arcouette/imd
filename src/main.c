@@ -15,11 +15,12 @@
 #define LINK      0b100000
 #define UNDERLINE 0b1000000
 #define IDDONE    0b10000000
+#define ITAL      0b100000000
 
 void style (char* data)
 {
   int flags = 0;
-  unsigned int hcount = 0;
+  unsigned int count = 0;
 
   printf("\x1b[0m" DEF_C);
 
@@ -30,8 +31,16 @@ void style (char* data)
       switch (data[i])
       {
         case '#':
-          hcount++;
-          flags |= HEADER;
+          if (!(flags & IDDONE))
+          {
+            count++;
+            flags |= HEADER;
+          }
+
+          continue;
+        case '*':
+          count++;
+          flags |= ITAL;
 
           continue;
         case '-':
@@ -44,9 +53,12 @@ void style (char* data)
 
           break;
         case '>':
-          printf(TAB_LIST_C);
+          if (!(flags & IDDONE))
+          {
+            printf(TAB_LIST_C);
 
-          flags |= TAB;
+            flags |= TAB;
+          }
 
           break;
         case '[':
@@ -84,11 +96,11 @@ void style (char* data)
           {
             flags |= OVERRIDE;
 
-            if (hcount == 1)
+            if (count == 1)
             {
               printf(H1_C);
             }
-            else if (hcount == 2)
+            else if (count == 2)
             {
               printf(H2_C);
             }
@@ -100,6 +112,24 @@ void style (char* data)
           else if (flags & LIST || flags & TAB)
           {
             printf("\x1b[0m" DEF_C);
+          }
+
+          if (flags & ITAL)
+          {
+            if (count == 1)
+            {
+              printf(ITALIC_C);
+            }
+            else if (count == 2)
+            {
+              printf(BOLD_C);
+            }
+            else if (count == 3)
+            {
+              printf(BOLD_ITALIC_C);
+            }
+
+            flags |= OVERRIDE;
           }
 
           flags |= IDDONE;
@@ -125,6 +155,18 @@ void style (char* data)
 
         continue;
       }
+      else if (data[i] == '*')
+      {
+        count--;
+
+        continue;
+      }
+      else if (count == 0 && flags & ITAL)
+      {
+        printf("\x1b[0m");
+
+        flags = 0;
+      }
       else if (flags & ALT)
       {
         printf(ALT_C);
@@ -137,7 +179,7 @@ void style (char* data)
       {
         newline:
         flags = 0;
-        hcount = 0;
+        count = 0;
         printf("\x1b[0m" DEF_C);
       }
     }
