@@ -22,9 +22,11 @@ void style (char* data)
   int flags = 0;
   unsigned int count = 0;
 
-  printf("\x1b[0m" DEF_C);
+  register char* out = malloc(sizeof("\x1b[0m" DEF_C));
+  register size_t sz = sizeof("\x1b[0m" DEF_C);
+  strcpy(out, "\x1b[0m" DEF_C);
 
-  for (size_t i = 0; data[i]!=0; i++)
+  for (register size_t i = 0; data[i]!=0; i++)
   {
     if (!(flags & OVERRIDE))
     {
@@ -46,7 +48,9 @@ void style (char* data)
         case '-':
           if (!(flags & IDDONE))
           {
-            printf(LIST_C);
+            sz += sizeof(LIST_C);
+            out = realloc(out, sz);
+            strcat(out, LIST_C);
 
             flags |= LIST;
           }
@@ -55,7 +59,9 @@ void style (char* data)
         case '>':
           if (!(flags & IDDONE))
           {
-            printf(TAB_LIST_C);
+            sz += sizeof(TAB_LIST_C);
+            out = realloc(out, sz);
+            strcat(out, TAB_LIST_C);
 
             flags |= TAB;
           }
@@ -64,7 +70,9 @@ void style (char* data)
         case '[':
           flags |= ALT | OVERRIDE;
 
-          printf(BRACKETS_C "[\x1b[0m");
+          sz += sizeof(BRACKETS_C "[\x1b[0m");
+          out = realloc(out, sz);
+          strcat(out, BRACKETS_C "[\x1b[0m");
 
           continue;
         case '(':
@@ -72,14 +80,20 @@ void style (char* data)
           {
             flags |= LINK | OVERRIDE;
 
-            printf(BRACKETS_C "(\x1b[0m");
+            sz += sizeof(BRACKETS_C "(\x1b[0m");
+            out = realloc(out, sz);
+            strcat(out, BRACKETS_C "(\x1b[0m");
+
+            continue;
           }
 
-          continue;
+          break;
         case '=':
           if (!(flags & IDDONE))
           {
-            printf(UNDERLINE_C);
+            sz += sizeof(UNDERLINE_C);
+            out = realloc(out, sz);
+            strcat(out, UNDERLINE_C);
 
             flags |= UNDERLINE;
           }
@@ -98,35 +112,49 @@ void style (char* data)
 
             if (count == 1)
             {
-              printf(H1_C);
+              sz += sizeof(H1_C);
+              out = realloc(out, sz);
+              strcat(out, H1_C);
             }
             else if (count == 2)
             {
-              printf(H2_C);
+              sz += sizeof(H2_C);
+              out = realloc(out, sz);
+              strcat(out, H2_C);
             }
             else
             {
-              printf(H3_C);
+              sz += sizeof(H3_C);
+              out = realloc(out, sz);
+              strcat(out, H3_C);
             }
           }
           else if (flags & LIST || flags & TAB)
           {
-            printf("\x1b[0m" DEF_C);
+            sz += sizeof("\x1b[0m" DEF_C);
+            out = realloc(out, sz);
+            strcat(out, "\x1b[0m" DEF_C);
           }
 
           if (flags & ITAL)
           {
             if (count == 1)
             {
-              printf(ITALIC_C);
+              sz += sizeof(ITALIC_C);
+              out = realloc(out, sz);
+              strcat(out, ITALIC_C);
             }
             else if (count == 2)
             {
-              printf(BOLD_C);
+              sz += sizeof(BOLD_C);
+              out = realloc(out, sz);
+              strcat(out, BOLD_C);
             }
             else if (count == 3)
             {
-              printf(BOLD_ITALIC_C);
+              sz += sizeof(BOLD_ITALIC_C);
+              out = realloc(out, sz);
+              strcat(out, BOLD_ITALIC_C);
             }
 
             flags |= OVERRIDE;
@@ -141,7 +169,9 @@ void style (char* data)
     {
       if (data[i] == ']')
       {
-        printf(BRACKETS_C "]\x1b[0m");
+        sz += sizeof(BRACKETS_C "]\x1b[0m");
+        out = realloc(out, sz);
+        strcat(out, BRACKETS_C "]\x1b[0m");
 
         flags = 0;
 
@@ -149,7 +179,9 @@ void style (char* data)
       }
       else if (data[i] == ')')
       {
-        printf(BRACKETS_C ")\x1b[0m");
+        sz += sizeof(BRACKETS_C ")\x1b[0m");
+        out = realloc(out, sz);
+        strcat(out, BRACKETS_C ")\x1b[0m");
 
         flags = 0;
 
@@ -163,29 +195,42 @@ void style (char* data)
       }
       else if (count == 0 && flags & ITAL)
       {
-        printf("\x1b[0m");
+        sz += sizeof("\x1b[0m");
+        out = realloc(out, sz);
+        strcat(out, "\x1b[0m");
 
         flags = 0;
       }
       else if (flags & ALT)
       {
-        printf(ALT_C);
+        sz += sizeof(ALT_C);
+        out = realloc(out, sz);
+        strcat(out, ALT_C);
       }
       else if (flags & LINK)
       {
-        printf(LINK_C);
+        sz += sizeof(LINK_C);
+        out = realloc(out, sz);
+        strcat(out, LINK_C);
       }
       else if (data[i] == '\n')
       {
         newline:
         flags = 0;
         count = 0;
-        printf("\x1b[0m" DEF_C);
+        sz += sizeof("\x1b[0m" DEF_C);
+        out = realloc(out, sz);
+        strcat(out, "\x1b[0m" DEF_C);
       }
     }
 
-    printf("%c", data[i]);
+    out = realloc(out, ++sz);
+    strncat(out, &data[i], 1);
   }
+
+  printf("%s", out);
+
+  free(out);
 }
 
 int main (const int argc, const char** argv)
