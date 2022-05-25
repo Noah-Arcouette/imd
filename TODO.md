@@ -11,7 +11,7 @@
     - [x] Tab Lists
     - [x] Links
     - [x] Under Lines
-    - [ ] Code Sections
+    - [x] Code Sections
     - [ ] Syntax
     - [x] Italics
     - [x] Bold

@@ -16,6 +16,8 @@
 #define UNDERLINE 0b1000000
 #define IDDONE    0b10000000
 #define ITAL      0b100000000
+#define SYNTAX    0b1000000000
+#define SYN_IN    0b10000000000
 
 void style (char* data)
 {
@@ -28,7 +30,7 @@ void style (char* data)
 
   for (register size_t i = 0; data[i]!=0; i++)
   {
-    if (!(flags & OVERRIDE))
+    if (!(flags & (OVERRIDE | SYN_IN)))
     {
       switch (data[i])
       {
@@ -108,8 +110,16 @@ void style (char* data)
         case '\t':
           break;
         case '`':
+          flags |= SYNTAX;
+          count++;
+
           break;
         default:
+          if (flags & SYNTAX)
+          {
+            goto syntax_label;
+          }
+
           if (flags & HEADER)
           {
             flags |= OVERRIDE;
@@ -169,7 +179,7 @@ void style (char* data)
           break;
       }
     }
-    else
+    else if (flags & OVERRIDE)
     {
       if (data[i] == ']')
       {
@@ -220,11 +230,50 @@ void style (char* data)
       else if (data[i] == '\n')
       {
         newline:
+
+        if (flags & SYNTAX)
+        {
+            syntax_label:
+            flags |= SYN_IN;
+            i--;
+
+            sz += sizeof(SYNTAX_C);
+            out = realloc(out, sz);
+            strcat(out, SYNTAX_C);
+
+            continue;
+        }
+
         flags = 0;
         count = 0;
         sz += sizeof("\x1b[0m" DEF_C);
         out = realloc(out, sz);
         strcat(out, "\x1b[0m" DEF_C);
+      }
+    }
+    else
+    {
+      switch (data[i])
+      {
+          case '`':
+            sz += sizeof(DEF_C);
+            out = realloc(out, sz);
+            strcat(out, DEF_C);
+
+            count--;
+
+            break;
+          case '\n':
+            sz += sizeof(SYNTAX_C);
+            out = realloc(out, sz);
+            strcat(out, SYNTAX_C);
+
+            break;
+      }
+
+      if (!count)
+      {
+        flags = 0;
       }
     }
 
