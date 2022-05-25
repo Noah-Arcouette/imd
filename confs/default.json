@@ -58,5 +58,9 @@
   },
   "bold-italic": {
     "styles": "italic bold"
+  },
+
+  "syntax": {
+    "fg": "purple"
   }
 }

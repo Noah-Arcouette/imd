@@ -7,39 +7,67 @@ def genConf (f):
     data = f.read();
     data = JSON.loads(data);
 
+    # outputs
     error      = scope(data['error']);
     defs       = scope(data['default']);
     highlight  = scope(data['highlight']);
+
+    # headers
     h1         = scope(data['h1']);
     h2         = scope(data['h2']);
     h3         = scope(data['h3']);
+
+    # lists
     list       = scope(data['list']);
     tab_list   = scope(data['tab-list']);
+
+    # links
     alt        = scope(data['alt']);
     link       = scope(data['link']);
     brackets   = scope(data['brackets']);
+
+    # underline
     underline  = scope(data['underline']);
+
+    # italics
     italic     = scope(data['italic']);
     bold       = scope(data['bold']);
     bold_ital  = scope(data['bold-italic']);
 
+    # syntax
+    syntax     = scope(data['syntax']);
+
     out = "#ifndef __CONF_H__\n#define __CONF_H__\n";
 
+    # outputs
     out += error.gen("error_c");
     out += defs.gen("def_c");
     out += highlight.gen("highlight_c");
+
+    # headers
     out += h1.gen("h1_c");
     out += h2.gen("h2_c");
     out += h3.gen("h3_c");
+
+    # lists
     out += list.gen("list_c");
     out += tab_list.gen("tab_list_c");
+
+    # links
     out += alt.gen("alt_c");
     out += link.gen("link_c");
     out += brackets.gen("brackets_c");
+
+    # underline
     out += underline.gen("underline_c");
+
+    # italics
     out += italic.gen("italic_c");
     out += bold.gen("bold_c");
     out += bold_ital.gen("bold_italic_c");
+
+    # syntax
+    out += syntax.gen("syntax_c");
 
     out += "#endif\n";
 

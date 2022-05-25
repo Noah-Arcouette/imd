@@ -37,9 +37,11 @@ void style (char* data)
           {
             count++;
             flags |= HEADER;
+
+            continue;
           }
 
-          continue;
+          break;
         case '*':
           count++;
           flags |= ITAL;
@@ -104,6 +106,8 @@ void style (char* data)
         case ' ':
           break;
         case '\t':
+          break;
+        case '`':
           break;
         default:
           if (flags & HEADER)

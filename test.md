@@ -69,5 +69,7 @@ if __name__ == "__main__":
 
 ```
 
+`int main (const int argc, const char** argv);`
+
 [link](https://url.com/)
 ![alt](https://image.com)
