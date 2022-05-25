@@ -1,4 +1,4 @@
-- [x] Parse Configuration ( only default )
+- [/] Parse Configuration ( only default )
 - [x] Parse Arguments
 - [x] Read File
 - [ ] Menu
@@ -18,5 +18,4 @@
     - [x] Italics Bold
 - [ ] Separate Into Lines
 - [ ] Add Decorations
-- [ ] Concatenate Array
 - [ ] Print / Dump to File / Less
