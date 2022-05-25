@@ -239,22 +239,24 @@ char* style (char* data, struct Settings s)
     }
     else
     {
-      switch (data[i])
+      if (!(s.flags & SETTINGS_FLAG_NO_SYNTAX))
       {
-          case '`':
-            sz += sizeof(DEF_C);
-            out = realloc(out, sz);
-            strcat(out, DEF_C);
+        // syntax
+      }
 
-            count--;
+      if (data[i] == '`')
+      {
+        sz += sizeof(DEF_C);
+        out = realloc(out, sz);
+        strcat(out, DEF_C);
 
-            break;
-          case '\n':
-            sz += sizeof(SYNTAX_C);
-            out = realloc(out, sz);
-            strcat(out, SYNTAX_C);
-
-            break;
+        count--;
+      }
+      else if (data[i] == '\n')
+      {
+        sz += sizeof(SYNTAX_C);
+        out = realloc(out, sz);
+        strcat(out, SYNTAX_C);
       }
 
       if (!count)

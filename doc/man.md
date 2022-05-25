@@ -22,8 +22,6 @@ No decoration I.E line numbers and file display
 
 ### -s, --no-syntax
 
-***NOT IMPLEMENTED***
-
 No syntax highlighting.
 
 ### -h, --help
