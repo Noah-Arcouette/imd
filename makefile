@@ -29,7 +29,7 @@ clean:
 
 # Files
 
-${OUT}: ./obj/main.o ./obj/settings.o ./obj/reader.o
+${OUT}: ./obj/main.o ./obj/settings.o ./obj/reader.o ./obj/styling.o
 	${CC} -o ${OUT} ./obj/*.o
 
 ./obj/main.o: ./src/main.c
@@ -40,3 +40,6 @@ ${OUT}: ./obj/main.o ./obj/settings.o ./obj/reader.o
 
 ./obj/reader.o: ./src/reader.c
 	${CC} -c -o ./obj/reader.o ./src/reader.c
+
+./obj/styling.o: ./src/styling.c
+	${CC} -c -o ./obj/styling.o ./src/styling.c
