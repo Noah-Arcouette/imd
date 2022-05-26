@@ -17,11 +17,11 @@
     - [x] Bold
     - [x] Italics Bold
 - [x] Separate Into Lines
-- [x] Add Decorations ( For print only )
+- [/] Add Decorations ( For print only )
 - [x] Print
-- [ ] Less
+- [x] Less
 - [ ] Editor
-  - [ ] Vim keys
+  - [x] Vim keys
   - [ ] Arrow keys
   - [ ] Mouse scroll
   - [ ] Insert mode

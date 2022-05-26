@@ -2,7 +2,7 @@ CC   = gcc -Wall -Wextra -I./inc -O2
 OUT  = ./bin/imd
 
 all: configure ${OUT}
-	${OUT} ./test.md -r
+	${OUT} ./test.md
 
 configure:
 	# Make binaries directories
@@ -32,7 +32,7 @@ clean:
 ${OUT}: ./obj/split.o ./obj/main.o ./obj/settings.o ./obj/reader.o ./obj/styling.o
 	${CC} -o ${OUT} ./obj/*.o
 
-./obj/main.o: ./src/main.c
+./obj/main.o: ./src/main.c ./src/lessPrint.c ./src/rawPrint.c
 	${CC} -c -o ./obj/main.o ./src/main.c
 
 ./obj/settings.o: ./src/settings.c
