@@ -16,6 +16,19 @@
     - [x] Italics
     - [x] Bold
     - [x] Italics Bold
-- [ ] Separate Into Lines
+- [x] Separate Into Lines
 - [ ] Add Decorations
-- [ ] Print / Dump to File / Less
+- [x] Print
+- [ ] Less
+- [ ] Editor
+  - [ ] Vim keys
+  - [ ] Arrow keys
+  - [ ] Mouse scroll
+  - [ ] Insert mode
+    - [ ] Switch
+    - [ ] Writing to buffer
+    - [ ] Deleting from buffer
+  - [ ] Saving over
+  - [ ] Goto line
+  - [ ] Save new / New name
+- [ ] Dump to file

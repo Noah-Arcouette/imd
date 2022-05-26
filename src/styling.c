@@ -10,9 +10,9 @@ char* style (char* data, struct Settings s)
   int flags = 0;
   unsigned int count = 0;
 
-  register char* out = malloc(sizeof("\x1b[0m" DEF_C));
-  register size_t sz = sizeof("\x1b[0m" DEF_C);
-  strcpy(out, "\x1b[0m" DEF_C);
+  register char* out = malloc(sizeof(DEF_C));
+  register size_t sz = sizeof(DEF_C);
+  strcpy(out, DEF_C);
 
   for (register size_t i = 0; data[i]!=0; i++)
   {
@@ -131,9 +131,9 @@ char* style (char* data, struct Settings s)
           }
           else if (flags & LIST || flags & TAB)
           {
-            sz += sizeof("\x1b[0m" DEF_C);
+            sz += sizeof(DEF_C);
             out = realloc(out, sz);
-            strcat(out, "\x1b[0m" DEF_C);
+            strcat(out, DEF_C);
           }
 
           if (flags & ITAL)
@@ -232,9 +232,9 @@ char* style (char* data, struct Settings s)
 
         flags = 0;
         count = 0;
-        sz += sizeof("\x1b[0m" DEF_C);
+        sz += sizeof(DEF_C);
         out = realloc(out, sz);
-        strcat(out, "\x1b[0m" DEF_C);
+        strcat(out, DEF_C);
       }
     }
     else

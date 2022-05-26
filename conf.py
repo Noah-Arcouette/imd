@@ -87,7 +87,7 @@ class Style:
         self.hidden  = False;
 
     def getColor (self):
-        out = "\\x1b[";
+        out = "\\x1b[0;";
 
         if self.fg == "default":
             out += "39"
