@@ -37,26 +37,41 @@ int main (const int argc, const char** argv)
   struct StrArray sa = split(out);
   free(out);
 
+  // get i size
+  size_t iSize = intLen(sa.size+1);
+
+  // print data raw
   if (s.flags & SETTINGS_FLAG_RAW)
   {
-    size_t iSize = intLen(sa.size+1);
-
     if (!(s.flags & SETTINGS_FLAG_NO_DEC))
     {
+      // print file name
+      printf(BOX_TEXT_C "%s\n", s.file);
+
+      // print top of box
       printf(BOX_C);
 
-      for (size_t i = 0; i<(iSize+1); i++)
+      for (size_t i = 0; i<s.win_cols; i++)
       {
+        if (i == (iSize+1))
+        {
+          printf(TBAR_TOP);
+
+          continue;
+        }
+
         printf(HBAR);
       }
 
-      printf(TR_CORNER "\n");
+      printf("\n");
     }
 
+    // print lines
     for (size_t i = 0; i<sa.size; i++)
     {
       if (!(s.flags & SETTINGS_FLAG_NO_DEC))
       {
+        // print box and padding
         printf(BOX_TEXT_C "%lu ", i+1);
 
         for (size_t j = 0; j<(iSize-intLen(i+1)); j++)
@@ -67,9 +82,11 @@ int main (const int argc, const char** argv)
         printf(BOX_C VBAR " \x1b[0m");
       }
 
+      // print line
       printf("%s\n", sa.strings[i]);
     }
 
+    // print bottom of the box
     if (!(s.flags & SETTINGS_FLAG_NO_DEC))
     {
       printf(BOX_C);

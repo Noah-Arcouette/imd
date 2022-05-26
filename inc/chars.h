@@ -27,5 +27,6 @@
 # define TL_CURVE             "╭"
 # define TR_CURVE             "╮"
 # define BL_CURVE             "╯"
-# define BR_CURVE             "╰"  
+# define BR_CURVE             "╰"
+# define TBAR_TOP             "┬"  
 #endif

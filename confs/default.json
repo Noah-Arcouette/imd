@@ -68,6 +68,6 @@
     "fg": "purple"
   },
   "box-text": {
-    
+    "styles": "bold"
   }
 }
