@@ -43,10 +43,18 @@ int main (const int argc, const char** argv)
   // print data raw
   if (s.flags & SETTINGS_FLAG_RAW)
   {
+
     if (!(s.flags & SETTINGS_FLAG_NO_DEC))
     {
       // print file name
-      printf(BOX_TEXT_C "%s\n", s.file);
+      if (s.flags & SETTINGS_FLAG_PIPE)
+      {
+        printf(BOX_TEXT_C "<PIPED>\n");
+      }
+      else
+      {
+        printf(BOX_TEXT_C "%s\n", s.file);
+      }
 
       // print top of box
       printf(BOX_C);

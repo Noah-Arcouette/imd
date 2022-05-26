@@ -17,7 +17,7 @@
     - [x] Bold
     - [x] Italics Bold
 - [x] Separate Into Lines
-- [ ] Add Decorations
+- [x] Add Decorations ( For print only )
 - [x] Print
 - [ ] Less
 - [ ] Editor
