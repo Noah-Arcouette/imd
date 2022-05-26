@@ -34,6 +34,10 @@ def genConf (f):
     bold       = scope(data['bold']);
     bold_ital  = scope(data['bold-italic']);
 
+    # boxs
+    box        = scope(data['box']);
+    box_text   = scope(data['box-text']);
+
     # syntax
     syntax     = scope(data['syntax']);
 
@@ -68,6 +72,10 @@ def genConf (f):
 
     # syntax
     out += syntax.gen("syntax_c");
+
+    # boxs
+    out += box.gen("box_c");
+    out += box_text.gen("box_text_c");
 
     out += "#endif\n";
 

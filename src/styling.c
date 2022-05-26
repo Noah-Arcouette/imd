@@ -254,9 +254,11 @@ char* style (char* data, struct Settings s)
       }
       else if (data[i] == '\n')
       {
-        sz += sizeof(SYNTAX_C);
+        sz += sizeof("\n" SYNTAX_C);
         out = realloc(out, sz);
-        strcat(out, SYNTAX_C);
+        strcat(out, "\n" SYNTAX_C);
+
+        continue;
       }
 
       if (!count)

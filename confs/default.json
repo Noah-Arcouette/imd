@@ -62,5 +62,12 @@
 
   "syntax": {
     "fg": "purple"
+  },
+
+  "box": {
+    "fg": "purple"
+  },
+  "box-text": {
+    
   }
 }
