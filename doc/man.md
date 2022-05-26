@@ -10,8 +10,6 @@ IMD also supports pipping.
 
 ### -r, --raw
 
-***NOT IMPLEMENTED***
-
 Print data without less like feature.
 
 ### -d, --no-decoration
