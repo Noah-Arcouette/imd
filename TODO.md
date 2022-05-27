@@ -22,8 +22,8 @@
 - [x] Less
 - [ ] Editor
   - [x] Vim keys
-  - [ ] Arrow keys
-  - [ ] Mouse scroll
+  - [x] Arrow keys
+  - [x] Mouse scroll
   - [ ] Insert mode
     - [ ] Switch
     - [ ] Writing to buffer
