@@ -17,7 +17,7 @@
     - [x] Bold
     - [x] Italics Bold
 - [x] Separate Into Lines
-- [/] Add Decorations ( For print only )
+- [x] Add Decorations ( For print only )
 - [x] Print
 - [x] Less
 - [ ] Editor
@@ -25,7 +25,7 @@
   - [x] Arrow keys
   - [x] Mouse scroll
   - [ ] Insert mode
-    - [ ] Switch
+    - [ ] Switch back to input mode
     - [ ] Writing to buffer
     - [ ] Deleting from buffer
   - [ ] Saving over
