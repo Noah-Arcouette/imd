@@ -7,7 +7,7 @@ s.win_rows--;
 
 if (!(s.flags & SETTINGS_FLAG_NO_DEC))
 {
-  s.win_rows -= 3;
+  s.win_rows -= 2;
 }
 
 while (c != 'q')
