@@ -51,15 +51,7 @@ struct Settings getSet (const int argc, const char** argv)
       }
       else
       {
-        printf(\
-          ERROR_C "Error"\
-          DEF_C ": Unknown option `"\
-          HIGHLIGHT_C "%s"\
-          DEF_C "'.\n\x1b[0m",
-          argv[i]);
-
-        free(s.file);
-        exit(1);
+        goto error;
       }
     }
     else if (argv[i][0] == '-')
@@ -86,16 +78,7 @@ struct Settings getSet (const int argc, const char** argv)
 
             break;
           default:
-            printf(\
-              ERROR_C "Error"\
-              DEF_C ": Unknown option `"\
-              HIGHLIGHT_C "%s"\
-              DEF_C "'.\n\x1b[0m",
-              argv[i]);
-
-            free(s.file);
-            exit(1);
-            break;
+            goto error;
         }
       }
     }
@@ -107,6 +90,21 @@ struct Settings getSet (const int argc, const char** argv)
       );
       strcpy(s.file, argv[i]);
     }
+
+    continue;
+
+    error:
+      printf(\
+        ERROR_C "Error"\
+        DEF_C ": Unknown option `"\
+        HIGHLIGHT_C "%s"\
+        DEF_C "'.\n\x1b[0m",
+        argv[i]);
+
+      free(s.file);
+      exit(1);
+
+      continue;
   }
 
   return s;
