@@ -177,7 +177,7 @@ char* style (char* data, struct Settings s)
 
         continue;
       }
-      else if (data[i] == ')')
+      else if (data[i] == ')' && !(flags & ALT))
       {
         sz += sizeof(BRACKETS_C ")\x1b[0m");
         out = realloc(out, sz);
