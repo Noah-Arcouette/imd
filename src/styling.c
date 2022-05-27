@@ -21,7 +21,7 @@ char* style (char* data, struct Settings s)
       switch (data[i])
       {
         case '#':
-          if (!(flags & IDDONE))
+          if (!(flags & (IDDONE | SYNTAX)))
           {
             count++;
             flags |= HEADER;
@@ -29,9 +29,12 @@ char* style (char* data, struct Settings s)
             continue;
           }
 
+          if (flags & SYNTAX)
+            goto syntax_label;
+
           break;
         case '*':
-          if (!(flags & HEADER))
+          if (!(flags & (HEADER | SYNTAX)))
           {
             count++;
             flags |= ITAL;
@@ -39,9 +42,12 @@ char* style (char* data, struct Settings s)
             continue;
           }
 
+          if (flags & SYNTAX)
+            goto syntax_label;
+
           goto defs;
         case '-':
-          if (!(flags & (IDDONE | HEADER)))
+          if (!(flags & (IDDONE | HEADER | SYNTAX)))
           {
             sz += sizeof(LIST_C);
             out = realloc(out, sz);
@@ -53,9 +59,12 @@ char* style (char* data, struct Settings s)
           if (flags & HEADER)
             goto defs;
 
+          else if (flags & SYNTAX)
+            goto syntax_label;
+
           break;
         case '>':
-          if (!(flags & (IDDONE | HEADER)))
+          if (!(flags & (IDDONE | HEADER | SYNTAX)))
           {
             sz += sizeof(TAB_LIST_C);
             out = realloc(out, sz);
@@ -67,9 +76,12 @@ char* style (char* data, struct Settings s)
           if (flags & HEADER)
             goto defs;
 
+          else if (flags & SYNTAX)
+            goto syntax_label;
+
           break;
         case '[':
-          if (!(flags & HEADER))
+          if (!(flags & (HEADER | SYNTAX)))
           {
             flags |= ALT | OVERRIDE;
 
@@ -80,11 +92,14 @@ char* style (char* data, struct Settings s)
             continue;
           }
 
+          if (flags & SYNTAX)
+            goto syntax_label;
+
           goto defs;
         case '(':
-          if (!(flags & (IDDONE | HEADER)))
+          if (!(flags & (IDDONE | HEADER | SYNTAX)) && flags & LINK)
           {
-            flags |= LINK | OVERRIDE;
+            flags |= OVERRIDE;
 
             sz += sizeof(BRACKETS_C "(\x1b[0m");
             out = realloc(out, sz);
@@ -96,9 +111,12 @@ char* style (char* data, struct Settings s)
           if (flags & HEADER)
             goto defs;
 
+          else if (flags & SYNTAX)
+            goto syntax_label;
+
           break;
         case '=':
-          if (!(flags & (IDDONE | HEADER)))
+          if (!(flags & (IDDONE | HEADER | SYNTAX)))
           {
             sz += sizeof(UNDERLINE_C);
             out = realloc(out, sz);
@@ -109,6 +127,9 @@ char* style (char* data, struct Settings s)
 
           if (flags & HEADER)
             goto defs;
+
+          else if (flags & SYNTAX)
+            goto syntax_label;
 
           break;
         case '\n':
@@ -129,6 +150,9 @@ char* style (char* data, struct Settings s)
           goto defs;
         default:
           defs:
+
+          if (flags & LINK)
+            flags &= ~LINK;
 
           if (flags & SYNTAX)
           {
@@ -206,7 +230,7 @@ char* style (char* data, struct Settings s)
         out = realloc(out, sz);
         strcat(out, BRACKETS_C "]\x1b[0m");
 
-        flags = 0;
+        flags = LINK;
 
         continue;
       }
@@ -278,7 +302,7 @@ char* style (char* data, struct Settings s)
         // syntax
       }
 
-      if (data[i] == '`')
+      if (data[i-1] != '\\' && data[i] == '`')
       {
         sz += sizeof(DEF_C);
         out = realloc(out, sz);
@@ -297,7 +321,7 @@ char* style (char* data, struct Settings s)
 
       if (!count)
       {
-        flags = 0;
+        flags = IDDONE;
       }
     }
 

@@ -254,28 +254,6 @@ def scope (section):
 
     return s;
 
-# def genConf (f):
-#     data = f.read();
-#     data = JSON.loads(data);
-#
-#     error      = scope(data['error']);
-#     defs       = scope(data['default']);
-#     highlight  = scope(data['highlight']);
-#     h1         = scope(data['h1']);
-#     h2         = scope(data['h2']);
-#
-#     out = "#ifndef __CONF_H__\n#define __CONF_H__\n";
-#
-#     out += error.gen("error_c");
-#     out += defs.gen("def_c");
-#     out += highlight.gen("highlight_c");
-#     out += h1.gen("h1_c");
-#     out += h2.gen("h2_c");
-#
-#     out += "#endif\n";
-#
-#     return out;
-
 def main ():
     conf = "default"
 

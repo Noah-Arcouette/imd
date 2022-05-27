@@ -13,6 +13,7 @@
 #define ITAL      0b100000000
 #define SYNTAX    0b1000000000
 #define SYN_IN    0b10000000000
+// #define LINK
 
 char* style (char*, struct Settings);
 

@@ -2,7 +2,7 @@ CC   = gcc -Wall -Wextra -I./inc -O2
 OUT  = ./bin/imd
 
 all: configure ${OUT}
-	${OUT} ./test.md
+	${OUT} ./test.md -rd
 
 configure:
 	# Make binaries directories
