@@ -20,16 +20,14 @@ while (c != 'q')
     // print file name
     if (s.flags & SETTINGS_FLAG_PIPE)
     {
-      printf(BOX_TEXT_C "<PIPED>\n");
+      printf(BOX_TEXT_C "<PIPED>\n" BOX_C);
     }
     else
     {
-      printf(BOX_TEXT_C "%s\n", s.file);
+      printf(BOX_TEXT_C "%s\n" BOX_C, s.file);
     }
 
     // print top of box
-    printf(BOX_C);
-
     for (size_t i = 0; i<s.win_cols; i++)
     {
       if (i == (iSize+1))
