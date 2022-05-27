@@ -27,7 +27,7 @@ Display this file.
 
 # Controls For Pager
 
-## Moment
+## Movement
 
 ### w-s
 
