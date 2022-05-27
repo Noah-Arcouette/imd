@@ -22,4 +22,8 @@
   - [x] Vim keys
   - [x] Arrow keys
   - [x] Mouse scroll
-- [ ] Dump to file
+  - [ ] Commands
+    - [ ] Goto line
+    - [ ] Dump to file
+    - [ ] Rename file
+    - [ ] Save file
