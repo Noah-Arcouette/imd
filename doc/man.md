@@ -41,6 +41,10 @@ Up-Down
 
 Up-Down
 
+### PageUp-PageDown
+
+PagedUp-PagedUp
+
 ### Mouse Wheel
 
 Just scroll.

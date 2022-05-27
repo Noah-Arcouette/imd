@@ -109,6 +109,21 @@ while (c != 'q')
       {
         offset++;
       }
+      else if (c == 0x35)
+      {
+        if (offset >= s.win_rows)
+        {
+          offset -= s.win_rows;
+        }
+        else
+        {
+          offset = 0;
+        }
+      }
+      else if (c == 0x36)
+      {
+        offset += s.win_rows;
+      }
     }
     // mouse
     else if (c == 0x4f)
