@@ -22,7 +22,7 @@
   - [x] Vim keys
   - [x] Arrow keys
   - [x] Mouse scroll
-  - [ ] Page up / Page down
+  - [x] Page up / Page down
   - [ ] Commands
     - [ ] Goto line
     - [ ] Dump to file
