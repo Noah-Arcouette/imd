@@ -22,8 +22,13 @@
   - [x] Vim keys
   - [x] Arrow keys
   - [x] Mouse scroll
+  - [ ] Page up / Page down
   - [ ] Commands
     - [ ] Goto line
     - [ ] Dump to file
     - [ ] Rename file
     - [ ] Save file
+    - [ ] Find word
+    - [ ] Goto header
+    - [ ] Goto end of file
+    - [ ] Goto start of file

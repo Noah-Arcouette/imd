@@ -23,15 +23,21 @@ clean:
 build: configure ${OUT}
 	strip -s ${OUT}
 
+	gzip imd.1 -k
+
 install: clean build
 	cp ${OUT} /usr/bin/imd
 
 	mkdir -p /etc/imd/
 	cp ./doc/* /etc/imd/
 
+	cp ./imd.1.gz /usr/share/man/man1/imd.1.gz
+
 uninstall:
 	rm /usr/bin/imd
 	rm -r /etc/imd
+
+	rm /usr/share/man/man1/imd.1.gz
 
 
 # Files
