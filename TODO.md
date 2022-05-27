@@ -4,7 +4,7 @@
 - [ ] Menu
   - [ ] Open All markdown files
   - [ ] Key selection
-- [ ] Style
+- [/] Style
     - [x] Headers
     - [x] Lists
     - [x] Check Lists
@@ -16,11 +16,9 @@
     - [x] Italics
     - [x] Bold
     - [x] Italics Bold
-- [x] Separate Into Lines
-- [x] Add Decorations ( For print only )
+- [x] Add Decorations
 - [x] Print
-- [x] Less
-- [ ] Editor
+- [/] Editor / Less ( Pager )
   - [x] Vim keys
   - [x] Arrow keys
   - [x] Mouse scroll
@@ -28,7 +26,7 @@
     - [ ] Switch back to input mode
     - [ ] Writing to buffer
     - [ ] Deleting from buffer
-  - [ ] Saving over
+  - [ ] Saving over file
   - [ ] Goto line
-  - [ ] Save new / New name
+  - [ ] Save new / New name ( for file )
 - [ ] Dump to file

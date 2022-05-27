@@ -20,15 +20,21 @@ clean:
 	# Remove unneeded Files
 	rm ./inc/conf.h -f
 
-# build
-#
-# install
-#
-# uninstall
+build: configure ${OUT}
+	strip -s ${OUT}
+
+install: clean build
+	cp ${OUT} /usr/bin/imd
+
+	mkdir -p /etc/imd/
+	cp ./doc/* /etc/imd/
+
+uninstall:
+	rm /usr/bin/imd
+	rm -r /etc/imd
 
 
 # Files
-
 ${OUT}: ./obj/split.o ./obj/main.o ./obj/settings.o ./obj/reader.o ./obj/styling.o
 	${CC} -o ${OUT} ./obj/*.o
 

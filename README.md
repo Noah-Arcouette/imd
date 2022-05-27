@@ -15,6 +15,20 @@ IMD is written in C and must be recompiled for configuration.
 - [(MAKE) BinUtils](https://www.gnu.org/software/binutils/)
 - [(MAKE) GZip](https://www.gnu.org/software/gzip/)
 
+
+# To Know
+
+Development is shown is the file `./TODO.md`.
+
+A unchecked box means it's no implemented.
+
+A slashed box means it's partiality implemented.
+
+A checked box means it's fully implemented.
+
+
+Known bugs are in the `./BUGS.md` file.
+
 # Configuration
 
 # Install
