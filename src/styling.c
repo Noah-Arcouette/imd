@@ -31,12 +31,17 @@ char* style (char* data, struct Settings s)
 
           break;
         case '*':
-          count++;
-          flags |= ITAL;
+          if (!(flags & HEADER))
+          {
+            count++;
+            flags |= ITAL;
 
-          continue;
+            continue;
+          }
+
+          goto defs;
         case '-':
-          if (!(flags & IDDONE))
+          if (!(flags & (IDDONE | HEADER)))
           {
             sz += sizeof(LIST_C);
             out = realloc(out, sz);
@@ -45,9 +50,12 @@ char* style (char* data, struct Settings s)
             flags |= LIST;
           }
 
+          if (flags & HEADER)
+            goto defs;
+
           break;
         case '>':
-          if (!(flags & IDDONE))
+          if (!(flags & (IDDONE | HEADER)))
           {
             sz += sizeof(TAB_LIST_C);
             out = realloc(out, sz);
@@ -56,17 +64,25 @@ char* style (char* data, struct Settings s)
             flags |= TAB;
           }
 
+          if (flags & HEADER)
+            goto defs;
+
           break;
         case '[':
-          flags |= ALT | OVERRIDE;
+          if (!(flags & HEADER))
+          {
+            flags |= ALT | OVERRIDE;
 
-          sz += sizeof(BRACKETS_C "[\x1b[0m");
-          out = realloc(out, sz);
-          strcat(out, BRACKETS_C "[\x1b[0m");
+            sz += sizeof(BRACKETS_C "[\x1b[0m");
+            out = realloc(out, sz);
+            strcat(out, BRACKETS_C "[\x1b[0m");
 
-          continue;
+            continue;
+          }
+
+          goto defs;
         case '(':
-          if (!(flags & IDDONE))
+          if (!(flags & (IDDONE | HEADER)))
           {
             flags |= LINK | OVERRIDE;
 
@@ -77,9 +93,12 @@ char* style (char* data, struct Settings s)
             continue;
           }
 
+          if (flags & HEADER)
+            goto defs;
+
           break;
         case '=':
-          if (!(flags & IDDONE))
+          if (!(flags & (IDDONE | HEADER)))
           {
             sz += sizeof(UNDERLINE_C);
             out = realloc(out, sz);
@@ -87,6 +106,9 @@ char* style (char* data, struct Settings s)
 
             flags |= UNDERLINE;
           }
+
+          if (flags & HEADER)
+            goto defs;
 
           break;
         case '\n':
@@ -96,11 +118,18 @@ char* style (char* data, struct Settings s)
         case '\t':
           break;
         case '`':
-          flags |= SYNTAX;
-          count++;
+          if (!(flags & HEADER))
+          {
+            flags |= SYNTAX;
+            count++;
 
-          break;
+            break;
+          }
+
+          goto defs;
         default:
+          defs:
+
           if (flags & SYNTAX)
           {
             goto syntax_label;
@@ -167,7 +196,11 @@ char* style (char* data, struct Settings s)
     }
     else if (flags & OVERRIDE)
     {
-      if (data[i] == ']')
+      if (flags & HEADER)
+      {
+        // do nothing
+      }
+      else if (data[i] == ']')
       {
         sz += sizeof(BRACKETS_C "]\x1b[0m");
         out = realloc(out, sz);
@@ -213,7 +246,8 @@ char* style (char* data, struct Settings s)
         out = realloc(out, sz);
         strcat(out, LINK_C);
       }
-      else if (data[i] == '\n')
+
+      if (data[i] == '\n')
       {
         newline:
 
