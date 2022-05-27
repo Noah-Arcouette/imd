@@ -3,6 +3,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <string.h>
+#include <signal.h>
 #include "conf.h"
 #include "settings.h"
 #include "reader.h"
@@ -20,12 +21,6 @@ size_t intLen (int x)
 
   return i;
 }
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <termios.h>
-#include <unistd.h>
-#include "wskeys.h"
 
 char keypress ()
 {
@@ -46,9 +41,29 @@ char keypress ()
 	return c;
 }
 
+void sigintHandle (int)
+{
+  printf(END);
+
+  exit(1);
+}
 
 int main (const int argc, const char** argv)
 {
+  // printf(SETUP REFRESH);
+  //
+  // char key1, key2, key3, key4;
+  // key1 = keypress();
+  // key2 = keypress();
+  // key3 = keypress();
+  // key4 = keypress();
+  //
+  // printf(END);
+  //
+  // printf("%x : %x : %x : %x\n", key1, key2, key3, key4);
+
+  signal(SIGINT, sigintHandle);
+
   // get settings
   struct Settings s = getSet(argc, argv);
 
