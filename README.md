@@ -29,10 +29,36 @@ A checked box means it's fully implemented.
 
 Known bugs are in the `./BUGS.md` file.
 
+
 # Configuration
+
+Run `make configure` to configure the program.
+
+***Configuration files not fully implemented***
+***Edit `./confs/default.json` to change styling***
+
 
 # Install
 
+Run `sudo make install` it will
+
+ - Clean previous build
+ - Rebuild all files
+ - Strip and zip files
+ - Install binaries and data
+
+
 # Uninstall
 
+Run `sudo make uninstall`.
+
+
 # Build
+
+Run `make build` to build and strip.
+
+Run `make clean` to clean previous build.
+
+Run `make configure` to configure and generate necessary files for build process.
+
+Run `make all` to build on a development build. ***This will run the built program with test file***
