@@ -4,7 +4,7 @@
 
 struct StrArray split (char* data)
 {
-  struct StrArray sa;
+  register struct StrArray sa;
   sa.strings       = malloc(1 * sizeof(char*));
   sa.size          = 1;
   sa.strings[0]    = malloc(1 * sizeof(char));

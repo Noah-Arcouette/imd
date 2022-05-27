@@ -8,7 +8,7 @@
 char* reader (struct Settings s)
 {
   // open file
-  FILE *fp;
+  register FILE *fp;
   if (s.flags & SETTINGS_FLAG_PIPE)
   {
     fp = stdin;
@@ -39,9 +39,9 @@ char* reader (struct Settings s)
   ssize_t size;
 
   // output data
-  char* data = malloc(1 * sizeof(char));
+  register char* data = malloc(1 * sizeof(char));
   data[0] = 0;
-  size_t datasz = 1;
+  register size_t datasz = 1;
 
   // read lines
   while ((size = getline(&line, &len, fp)) != -1) {

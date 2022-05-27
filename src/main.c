@@ -13,7 +13,7 @@
 
 size_t intLen (int x)
 {
-  size_t i;
+  register size_t i;
   for (i = 0; x; x/=10)
   {
     i++;
@@ -71,7 +71,7 @@ int main (const int argc, const char** argv)
   char* data = reader(s);
 
   // style data
-  char* out = style(data, s);
+  register char* out = style(data, s);
   free(data);
 
   // split into lines

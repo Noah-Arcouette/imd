@@ -8,7 +8,7 @@
 
 struct Settings getSet (const int argc, const char** argv)
 {
-  struct Settings s;
+  register struct Settings s;
   s.flags = 0;
 
   s.file = malloc(sizeof("./README.md"));
