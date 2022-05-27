@@ -25,7 +25,7 @@
   - [x] Page up / Page down
   - [ ] Commands
     - [ ] Goto line
-    - [ ] Dump to file
+    - [ ] Dump to file **Will be styled**
     - [ ] Rename file
     - [ ] Save file
     - [ ] Find word

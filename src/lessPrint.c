@@ -90,6 +90,11 @@ while (c != 'q')
   {
     offset++;
   }
+  // command
+  else if (c == ':')
+  {
+
+  }
   // special characters
   else if (c == 0x1b)
   {
