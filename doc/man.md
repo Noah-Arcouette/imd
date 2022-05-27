@@ -25,7 +25,7 @@ No syntax highlighting.
 Display this file.
 
 
-# Controls For Editor / Less ( Pager )
+# Controls For Pager
 
 ## Moment
 
