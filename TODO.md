@@ -18,15 +18,8 @@
     - [x] Italics Bold
 - [x] Add Decorations
 - [x] Print
-- [/] Editor / Less ( Pager )
+- [x] Less ( Pager )
   - [x] Vim keys
   - [x] Arrow keys
   - [x] Mouse scroll
-  - [ ] Insert mode
-    - [ ] Switch back to input mode
-    - [ ] Writing to buffer
-    - [ ] Deleting from buffer
-  - [ ] Saving over file
-  - [ ] Goto line
-  - [ ] Save new / New name ( for file )
 - [ ] Dump to file
