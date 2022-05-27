@@ -14,6 +14,7 @@ while (c != 'q')
 {
   printf(REFRESH);
 
+  // draw top bar
   if (!(s.flags & SETTINGS_FLAG_NO_DEC))
   {
     // print file name
@@ -44,6 +45,7 @@ while (c != 'q')
     printf("\n");
   }
 
+  // draw text
   for (size_t i = 0; i<s.win_rows; i++)
   {
     if ((i+offset)<sa.size)
@@ -90,7 +92,7 @@ while (c != 'q')
   {
     offset++;
   }
-  // special character
+  // special characters
   else if (c == 0x1b)
   {
     c = keypress();
@@ -110,7 +112,7 @@ while (c != 'q')
         offset++;
       }
     }
-    // mouse ?
+    // mouse
     else if (c == 0x4f)
     {
       c = keypress();

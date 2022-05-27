@@ -23,3 +23,35 @@ No syntax highlighting.
 ### -h, --help
 
 Display this file.
+
+
+# Controls For Editor / Less ( Pager )
+
+## Moment
+
+### w-s
+
+Up-Down
+
+### j-k
+
+Up-Down
+
+### ArrowUp-ArrowDown
+
+Up-Down
+
+### Mouse Wheel
+
+Just scroll.
+
+### q
+
+Quit.
+
+### Ctrl-c
+
+Force quit.
+
+***Warning: Does not free data, will cause memory leaks***
+***Only use when `q' doesn't work***
