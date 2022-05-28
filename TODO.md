@@ -23,8 +23,8 @@
   - [x] Arrow keys
   - [x] Mouse scroll
   - [x] Page up / Page down
-  - [ ] Commands
-    - [ ] Goto line
+  - [/] Commands
+    - [x] Goto line
     - [ ] Dump to file **Will be styled**
     - [ ] Rename file
     - [ ] Save file

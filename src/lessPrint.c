@@ -128,7 +128,10 @@ while (c != 'q')
       buff[j++] = c;
     }
 
-    
+    if (isNum(buff))
+    {
+      offset = toNum(buff)-1;
+    }
 
     // reset
     for (; j; )

@@ -41,6 +41,30 @@ char keypress ()
 	return c;
 }
 
+int isNum (char* data)
+{
+  for (size_t i = 0; data[i]!=0 && data[i]!=' '; i++)
+  {
+    if (data[i] < '0' || data[i] > '9')
+      return 0;
+  }
+
+  return 1;
+}
+
+int toNum (char* data)
+{
+  int out = 0;
+
+  for (size_t i = 0; data[i]!=0 && data[i]!=' '; i++)
+  {
+      out *= 10;
+      out += data[i] - '0';
+  }
+
+  return out;
+}
+
 void sigintHandle (int)
 {
   printf(END);
