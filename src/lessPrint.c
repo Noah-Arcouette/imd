@@ -120,7 +120,7 @@ while (c != 'q')
         break;
       }
 
-      if (c == '\n')
+      if (c == '\n' || j > s.win_cols-3)
       {
         break;
       }
