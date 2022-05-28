@@ -27,7 +27,6 @@
     - [x] Goto line
     - [ ] Dump to file **Will be styled**
     - [ ] Rename file
-    - [ ] Find word
     - [ ] Goto header
     - [x] Goto end of file
     - [x] Goto start of file
