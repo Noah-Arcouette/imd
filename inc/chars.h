@@ -17,7 +17,7 @@
 # define SETUP                "\x1b[?25l\x1b[?47h\x1b[?1049h\x1b[=7l"
 # define MOVE_HOME            "\x1b[H"
 # define MOVE(x, y)           ("\x1b[" #y ";" #x "H")
-# define MOVE_P(x, y)         printf("\x1b[%d;%dH", y, x);
+# define MOVE_P(x, y)         printf("\x1b[%ld;%ldH", y, x);
 # define HBAR                 "─"
 # define VBAR                 "│"
 # define TL_CORNER            "┌"
@@ -28,5 +28,5 @@
 # define TR_CURVE             "╮"
 # define BL_CURVE             "╯"
 # define BR_CURVE             "╰"
-# define TBAR_TOP             "┬"  
+# define TBAR_TOP             "┬"
 #endif
