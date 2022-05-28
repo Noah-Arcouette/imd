@@ -27,33 +27,43 @@ Display this file.
 
 # Controls For Pager
 
-## Movement
-
-### w-s
+## w-s
 
 Up-Down
 
-### j-k
+## j-k
 
 Up-Down
 
-### ArrowUp-ArrowDown
+## ArrowUp-ArrowDown
 
 Up-Down
 
-### PageUp-PageDown
+## PageUp-PageDown
 
 PagedUp-PagedUp
 
-### Mouse Wheel
+## Mouse Wheel
 
 Just scroll.
 
-### q
+## q
 
 Quit.
 
-### Ctrl-c
+## G
+
+Goto end of file.
+
+## g
+
+Goto start of file.
+
+## :<line>
+
+Goto `line`.
+
+## Ctrl-c
 
 Force quit.
 

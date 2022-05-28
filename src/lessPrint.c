@@ -140,6 +140,21 @@ while (c != 'q')
     }
     buff[0] = ' ';
   }
+  else if (c == 'G')
+  {
+    if (sa.size > s.win_rows)
+    {
+      offset = sa.size-s.win_rows;
+
+      continue;
+    }
+
+    offset = 0;
+  }
+  else if (c == 'g')
+  {
+    offset = 0;
+  }
   else if ((c == 'j' || c == 'w') && offset > 0)
   {
     offset--;
