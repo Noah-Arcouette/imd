@@ -43,6 +43,9 @@ char keypress ()
 
 int isNum (char* data)
 {
+  if (data[0] == 0 || data[0] == ' ')
+    return 0;
+
   for (size_t i = 0; data[i]!=0 && data[i]!=' '; i++)
   {
     if (data[i] < '0' || data[i] > '9')
