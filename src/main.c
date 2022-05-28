@@ -69,6 +69,8 @@ void sigintHandle (int)
 {
   printf(END);
 
+  printf(ERROR_C "!!!CRASHED!!!\n\x1b[0m");
+
   exit(1);
 }
 

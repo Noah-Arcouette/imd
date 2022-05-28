@@ -219,4 +219,4 @@ while (c != 'q')
 
 free(buff);
 
-printf(END);
+printf(END DEF_C "Thank you for using " HIGHLIGHT_C "IMD\x1b[0m\n");
