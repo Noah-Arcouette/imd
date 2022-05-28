@@ -38,6 +38,13 @@ Run `make configure` to configure the program.
 ***Edit `./confs/default.json` to change styling***
 
 
+# AUR
+
+IMD is on the AUR at https://aur.archlinux.org/packages/imd-git.
+
+I Recommend using [Trizen](https://github.com/trizen/trizen) to download. ***Yay doesn't work*** 
+
+
 # Install
 
 Run `sudo make install` it will
