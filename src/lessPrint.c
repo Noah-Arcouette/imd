@@ -3,12 +3,22 @@ printf(DEF_C SETUP);
 char c = 0;
 size_t offset = 0;
 
-s.win_rows--;
+s.win_rows-=2;
 
 if (!(s.flags & SETTINGS_FLAG_NO_DEC))
 {
-  s.win_rows -= 2;
+  s.win_rows -= 1;
 }
+
+char* buff = malloc(s.win_cols);
+
+for (size_t i = 0; i<s.win_cols; i++)
+{
+  buff[i] = ' ';
+}
+buff[s.win_cols-1] = 0;
+
+size_t j = 0;
 
 while (c != 'q')
 {
@@ -27,7 +37,7 @@ while (c != 'q')
       printf(BOX_TEXT_C "%s", s.file);
     }
 
-    printf(" %ld\%\n" BOX_C, ((offset+1)*100) / sa.size);
+    printf(" %ld%%\n" BOX_C, ((offset+1)*100) / sa.size);
 
     // print top of box
     for (size_t i = 0; i<s.win_cols; i++)
@@ -43,6 +53,10 @@ while (c != 'q')
     }
 
     printf("\n");
+  }
+  else
+  {
+    printf(BOX_TEXT_C " %ld%%\n", ((offset+1)*100) / sa.size);
   }
 
   // draw text
@@ -84,18 +98,52 @@ while (c != 'q')
 
   c = keypress();
 
-  if ((c == 'j' || c == 'w') && offset > 0)
+  if (c == ':')
+  {
+    // get input
+    while (1)
+    {
+      MOVE_P((size_t)0, s.win_cols);
+      printf(BOX_TEXT_C ":%s", buff);
+
+      c = keypress();
+
+      if (c == 0x7f)
+      {
+        if (j > 0)
+        {
+          buff[--j] = ' ';
+
+          continue;
+        }
+
+        break;
+      }
+
+      if (c == '\n')
+      {
+        break;
+      }
+
+      buff[j++] = c;
+    }
+
+    
+
+    // reset
+    for (; j; )
+    {
+      buff[j--] = ' ';
+    }
+    buff[0] = ' ';
+  }
+  else if ((c == 'j' || c == 'w') && offset > 0)
   {
     offset--;
   }
   else if ((c == 'k' || c == 's'))
   {
     offset++;
-  }
-  // command
-  else if (c == ':')
-  {
-
   }
   // special characters
   else if (c == 0x1b)
@@ -150,5 +198,7 @@ while (c != 'q')
     }
   }
 }
+
+free(buff);
 
 printf(END);
