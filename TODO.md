@@ -12,7 +12,7 @@
     - [x] Links
     - [x] Under Lines
     - [x] Code Sections
-    - [x] Syntax
+    - [x] Syntax ***Doesn't know what comments are***
     - [x] Italics
     - [x] Bold
     - [x] Italics Bold
@@ -25,7 +25,6 @@
   - [x] Page up / Page down
   - [/] Commands
     - [x] Goto line
-    - [ ] Dump to file **Will be styled**
     - [ ] Rename file
     - [ ] Goto header
     - [x] Goto end of file
