@@ -7,7 +7,7 @@
 
 char* style (char* data, struct Settings s)
 {
-  int flags = 0;
+  unsigned long long flags = 0;
   unsigned int count = 0;
 
   register char* out = malloc(sizeof(DEF_C));
@@ -299,7 +299,7 @@ char* style (char* data, struct Settings s)
     {
       if (!(s.flags & SETTINGS_FLAG_NO_SYNTAX))
       {
-        // syntax
+        #include "syntax.c"
       }
 
       if (data[i-1] != '\\' && data[i] == '`')

@@ -53,7 +53,7 @@ ${OUT}: ./obj/split.o ./obj/main.o ./obj/settings.o ./obj/reader.o ./obj/styling
 ./obj/reader.o: ./src/reader.c
 	${CC} -c -o ./obj/reader.o ./src/reader.c
 
-./obj/styling.o: ./src/styling.c
+./obj/styling.o: ./src/styling.c ./src/syntax.c
 	${CC} -c -o ./obj/styling.o ./src/styling.c
 
 ./obj/split.o: ./src/split.c

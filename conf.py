@@ -40,6 +40,10 @@ def genConf (f):
 
     # syntax
     syntax     = scope(data['syntax']);
+    operator   = scope(data['operator']);
+    string     = scope(data['string']);
+    number     = scope(data['number']);
+    bracket    = scope(data['bracket']);
 
     out = "#ifndef __CONF_H__\n#define __CONF_H__\n";
 
@@ -72,6 +76,10 @@ def genConf (f):
 
     # syntax
     out += syntax.gen("syntax_c");
+    out += operator.gen("operator_c");
+    out += string.gen("string_c");
+    out += number.gen("number_c");
+    out += bracket.gen("bracket_c");
 
     # boxs
     out += box.gen("box_c");

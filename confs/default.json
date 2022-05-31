@@ -63,6 +63,18 @@
   "syntax": {
     "fg": "purple"
   },
+  "operator": {
+    "fg": "blue"
+  },
+  "string": {
+    "fg": "red"
+  },
+  "number": {
+    "fg": "cyan"
+  },
+  "bracket": {
+    "fg": "bright blue"
+  },
 
   "box": {
     "fg": "purple"
