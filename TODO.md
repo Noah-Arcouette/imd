@@ -4,7 +4,7 @@
 - [ ] Menu
   - [ ] Open All markdown files
   - [ ] Key selection
-- [/] Style
+- [x] Style
     - [x] Headers
     - [x] Lists
     - [x] Check Lists

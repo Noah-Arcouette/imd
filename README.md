@@ -5,6 +5,12 @@ The IMD is a markdown reader designed to look good and be useful.
 IMD is written in C and must be recompiled for configuration.
 
 
+# Examples
+
+![top](/img/top.png)
+![bottom](/img/bottom.png)
+
+
 # Requirements
 
 - [(GNU) LibC](https://www.gnu.org/software/libc/)
@@ -42,7 +48,7 @@ Run `make configure` to configure the program.
 
 IMD is on the AUR at https://aur.archlinux.org/packages/imd-git.
 
-I Recommend using [Trizen](https://github.com/trizen/trizen) to download. ***Yay doesn't work*** 
+I Recommend using [Trizen](https://github.com/trizen/trizen) to download. ***Yay doesn't work***
 
 
 # Install
