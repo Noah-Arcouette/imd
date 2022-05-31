@@ -13,7 +13,8 @@
 #define ITAL      0b100000000
 #define SYNTAX    0b1000000000
 #define SYN_IN    0b10000000000
-#define STYLE     0b100000000000
+#define STYLE     0b1
+#define STRING    0b10
 
 char* style (char*, struct Settings);
 

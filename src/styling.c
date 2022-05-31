@@ -7,7 +7,8 @@
 
 char* style (char* data, struct Settings s)
 {
-  unsigned long long flags = 0;
+  unsigned int flags = 0;
+  unsigned int styleFlags = 0;
   unsigned int count = 0;
 
   register char* out = malloc(sizeof(DEF_C));
@@ -322,6 +323,7 @@ char* style (char* data, struct Settings s)
       if (!count)
       {
         flags = IDDONE;
+        styleFlags = 0;
       }
     }
 

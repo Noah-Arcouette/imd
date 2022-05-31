@@ -12,7 +12,7 @@
     - [x] Links
     - [x] Under Lines
     - [x] Code Sections
-    - [/] Syntax
+    - [x] Syntax
     - [x] Italics
     - [x] Bold
     - [x] Italics Bold
