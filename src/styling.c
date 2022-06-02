@@ -67,9 +67,9 @@ char* style (char* data, struct Settings s)
         case '>':
           if (!(flags & (IDDONE | HEADER | SYNTAX)))
           {
-            sz += sizeof(TAB_LIST_C);
+            sz += sizeof(TAB_LIST_C ">" DEF_C);
             out = realloc(out, sz);
-            strcat(out, TAB_LIST_C);
+            strcat(out, TAB_LIST_C ">" DEF_C);
 
             flags |= TAB;
           }
@@ -80,7 +80,7 @@ char* style (char* data, struct Settings s)
           else if (flags & SYNTAX)
             goto syntax_label;
 
-          break;
+          continue;
         case '[':
           if (!(flags & (HEADER | SYNTAX)))
           {
