@@ -1,5 +1,6 @@
-CC   = cc -Wall -Wextra -I./inc -O2
-OUT  = ./bin/imd
+CFLAGS =
+CC     = cc -Wall -Wextra -I./inc -O2 -std=c18 ${CFLAGS}
+OUT    = ./bin/imd
 
 all: configure ${OUT}
 	${OUT} ./test.md
