@@ -50,9 +50,9 @@ char* style (char* data, struct Settings s)
         case '-':
           if (!(flags & (IDDONE | HEADER | SYNTAX)))
           {
-            sz += sizeof(LIST_C);
+            sz += sizeof(LIST_C "-" DEF_C);
             out = realloc(out, sz);
-            strcat(out, LIST_C);
+            strcat(out, LIST_C "-" DEF_C);
 
             flags |= LIST;
           }
@@ -63,7 +63,7 @@ char* style (char* data, struct Settings s)
           else if (flags & SYNTAX)
             goto syntax_label;
 
-          break;
+          continue;
         case '>':
           if (!(flags & (IDDONE | HEADER | SYNTAX)))
           {

@@ -1,8 +1,11 @@
-CC   = gcc -Wall -Wextra -I./inc -O2
+CC   = cc -Wall -Wextra -I./inc -O2
 OUT  = ./bin/imd
 
 all: configure ${OUT}
 	${OUT} ./test.md
+
+test: configure ${OUT}
+	${OUT} ./README.md
 
 configure:
 	# Make binaries directories

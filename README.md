@@ -14,7 +14,9 @@ IMD is written in C and must be recompiled for configuration.
 # Requirements
 
 - [(GNU) LibC](https://www.gnu.org/software/libc/)
-- [(MAKE) GCC](https://gcc.gnu.org/)
+- (MAKE) C Compiler
+  - [GCC](https://gcc.gnu.org/)
+  - [CLANG](https://clang.org/)
 - [(MAKE) Git](https://git-scm.com/)
 - [(MAKE) Python](https://www.python.org/)
 - [(MAKE) (GNU) Make](https://www.gnu.org/software/make/)
