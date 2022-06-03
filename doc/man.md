@@ -24,6 +24,10 @@ No syntax highlighting.
 
 Display this file.
 
+### -v, --version
+
+Display version.
+
 
 # Controls For Pager
 
