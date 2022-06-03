@@ -12,8 +12,11 @@ configure:
 	# Make binaries directories
 	mkdir -p obj/ bin/
 
-	# Run conf.py
+	# gen conf.h
 	python3 ./conf.py
+
+	# gen vinfo.h
+	./genversion
 
 clean:
 	# Remove binaries

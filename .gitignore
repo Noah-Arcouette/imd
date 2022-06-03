@@ -9,6 +9,7 @@ bin/
 test/
 *.test
 inc/conf.h
+inc/vinfo.h
 
 # Compressed
 
