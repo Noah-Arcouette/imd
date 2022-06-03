@@ -26,7 +26,7 @@ clean:
 	rm -f *.gz
 
 	# Remove unneeded Files
-	rm ./inc/conf.h -f
+	rm ./inc/conf.h ./inc/vinfo.h -f
 
 build: configure ${OUT}
 	strip -s ${OUT}
