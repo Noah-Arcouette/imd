@@ -1,6 +1,7 @@
 CFLAGS =
 CC     = cc -Wall -Wextra -I./inc -O2 ${CFLAGS}
 OUT    = ./bin/imd
+VER    = 2.3
 
 all: configure ${OUT}
 	${OUT} ./test.md
@@ -16,7 +17,7 @@ configure:
 	python3 ./conf.py
 
 	# gen vinfo.h
-	./genversion
+	./genversion ${VER}
 
 clean:
 	# Remove binaries

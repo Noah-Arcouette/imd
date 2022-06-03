@@ -5,6 +5,7 @@
 #include <string.h>
 #include "conf.h"
 #include "settings.h"
+#include "vinfo.h"
 
 struct Settings getSet (const int argc, const char** argv)
 {
@@ -49,6 +50,12 @@ struct Settings getSet (const int argc, const char** argv)
         s.file = realloc(s.file, sizeof("/etc/imd/man.md"));
         strcpy(s.file, "/etc/imd/man.md");
       }
+      else if (!strcmp(argv[i], "--version"))
+      {
+        printf(HIGHLIGHT_C "IMD" DEF_C " V" IMD_VERSION "-" IMD_REVS "\x1b[0m\n");
+
+        exit(0);
+      }
       else
       {
         goto error;
@@ -77,6 +84,10 @@ struct Settings getSet (const int argc, const char** argv)
             strcpy(s.file, "/etc/imd/man.md");
 
             break;
+          case 'v':
+            printf(HIGHLIGHT_C "IMD" DEF_C " V" IMD_VERSION "-" IMD_REVS "\x1b[0m\n");
+
+            exit(0);
           default:
             goto error;
         }
