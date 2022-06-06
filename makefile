@@ -46,7 +46,7 @@ install: clean build
 	cp ./inc/* /etc/imd/src
 	cp ./LICENSE.TXT /etc/imd
 
-	cp ./rebuild/makefile /src/imd/
+	cp ./rebuild/makefile /etc/imd/
 
 	cp ./rebuild/imd-rebuild /usr/bin/imd-rebuild
 

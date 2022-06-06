@@ -1,5 +1,4 @@
 #!/bin/sh
-
 REVS=$(git rev-list --all --count)
 
 printf "#ifndef __IMD_VERSION_INFO__\n\

@@ -1,3 +1,11 @@
 #!/bin/sh
 
+imd -v
+
+printf "Rebuilding...\n\n"
+
+
 sudo make -f /etc/imd/makefile CFLAGS="$1"
+
+
+printf "\nDone.\n"
