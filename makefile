@@ -1,5 +1,5 @@
 CFLAGS =
-CC     = cc -Wall -Wextra -I./inc -O2 ${CFLAGS} -std=gnu11
+CC     = cc -Wall -Wextra -I./inc -O2 -std=gnu11 ${CFLAGS}
 OUT    = ./bin/imd
 VER    = 2.3
 
@@ -37,9 +37,14 @@ install: clean build
 	cp ${OUT} /usr/bin/imd
 
 	mkdir -p /etc/imd/
+	mkdir -p /etc/imd/src/
 	cp ./doc/* /etc/imd/
 
 	cp ./imd.1.gz /usr/share/man/man1/imd.1.gz
+
+	cp ./src/* /etc/imd/src
+	cp ./inc/* /etc/imd/src
+	cp ./LICENSE.TXT /etc/imd
 
 uninstall:
 	rm /usr/bin/imd
