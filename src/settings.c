@@ -9,11 +9,11 @@
 
 struct Settings getSet (const int argc, const char** argv)
 {
+  // initialize structure
   register struct Settings s;
   s.flags = 0;
 
-  s.file = malloc(sizeof("./README.md"));
-  strcpy(s.file, "./README.md");
+  s.file = NULL;
 
   // get window size
   struct winsize w;
@@ -26,6 +26,12 @@ struct Settings getSet (const int argc, const char** argv)
   if (!isatty(STDIN_FILENO))
   {
     s.flags |= SETTINGS_FLAG_PIPE;
+  }
+  else
+  {
+    // set default filename
+    s.file = malloc(sizeof("./README.md"));
+    strcpy(s.file, "./README.md");
   }
 
   // parse args
@@ -53,6 +59,8 @@ struct Settings getSet (const int argc, const char** argv)
       else if (!strcmp(argv[i], "--version"))
       {
         printf(HIGHLIGHT_C "IMD" DEF_C " V" IMD_VERSION "-" IMD_REVS "\x1b[0m\n");
+
+        free(s.file);
 
         exit(0);
       }
@@ -87,6 +95,7 @@ struct Settings getSet (const int argc, const char** argv)
           case 'v':
             printf(HIGHLIGHT_C "IMD" DEF_C " V" IMD_VERSION "-" IMD_REVS "\x1b[0m\n");
 
+            free(s.file);
             exit(0);
           default:
             goto error;

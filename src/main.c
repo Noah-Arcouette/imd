@@ -11,6 +11,7 @@
 #include "split.h"
 #include "chars.h"
 
+// gets amount of digits in a number
 size_t intLen (int x)
 {
   register size_t i;
@@ -22,6 +23,7 @@ size_t intLen (int x)
   return i;
 }
 
+// gets and waits for keypress
 char keypress ()
 {
 	char c;
@@ -41,6 +43,7 @@ char keypress ()
 	return c;
 }
 
+// check if string is a number
 int isNum (char* data)
 {
   if (data[0] == 0 || data[0] == ' ')
@@ -55,6 +58,7 @@ int isNum (char* data)
   return 1;
 }
 
+// change string to number
 int toNum (char* data)
 {
   int out = 0;
@@ -68,7 +72,8 @@ int toNum (char* data)
   return out;
 }
 
-void sigintHandle (int)
+// handle sigint ( Doesn't free memory )
+void sigintHandle (int sig)
 {
   printf(END);
 
@@ -79,18 +84,6 @@ void sigintHandle (int)
 
 int main (const int argc, const char** argv)
 {
-  // printf(SETUP REFRESH);
-  //
-  // char key1, key2, key3, key4;
-  // key1 = keypress();
-  // key2 = keypress();
-  // key3 = keypress();
-  // key4 = keypress();
-  //
-  // printf(END);
-  //
-  // printf("%x : %x : %x : %x\n", key1, key2, key3, key4);
-
   signal(SIGINT, sigintHandle);
 
   // get settings
@@ -108,7 +101,7 @@ int main (const int argc, const char** argv)
   free(out);
 
   // get i size
-  size_t iSize = intLen(sa.size+1);
+  const size_t iSize = intLen(sa.size+1);
 
   // print data raw
   if (s.flags & SETTINGS_FLAG_RAW)
