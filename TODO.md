@@ -1,7 +1,7 @@
 - [/] Parse Configuration ( only default )
   - [x] Parse JSON
   - [ ] Style Creator
-  - [/] Rebuilding
+  - [x] Rebuilding
 - [x] Parse Arguments
 - [x] Read File
 - [ ] Menu

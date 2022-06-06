@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sudo make -f /etc/imd/makefile CFLAGS="$1"

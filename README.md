@@ -46,6 +46,13 @@ Run `make configure` to configure the program.
 ***Edit `./confs/default.json` to change styling***
 
 
+# Rebuild
+
+Once IMD is install you can update the source code in the `/etc/imd/src/` directory to your liking.
+
+Then rebuild IMD with `imd-rebuild <cflags>`
+
+
 # AUR
 
 IMD is on the AUR at https://aur.archlinux.org/packages/imd-git.

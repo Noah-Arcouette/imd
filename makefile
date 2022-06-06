@@ -48,8 +48,11 @@ install: clean build
 
 	cp ./rebuild/makefile /src/imd/
 
+	cp ./rebuild/imd-rebuild /usr/bin/imd-rebuild
+
 uninstall:
 	rm /usr/bin/imd
+	rm /usr/bin/imd-rebuild
 	rm -r /etc/imd
 
 	rm /usr/share/man/man1/imd.1.gz
