@@ -14,13 +14,13 @@ IMD is written in C and must be recompiled for configuration.
 # Requirements
 
 - [(GNU) LibC](https://www.gnu.org/software/libc/)
-- (MAKE) C Compiler
+- C Compiler
   - [GCC](https://gcc.gnu.org/)
   - [CLANG](https://clang.org/)
+- [(GNU) Make](https://www.gnu.org/software/make/)
+- [BinUtils](https://www.gnu.org/software/binutils/)
 - [(MAKE) Git](https://git-scm.com/)
 - [(MAKE) Python](https://www.python.org/)
-- [(MAKE) (GNU) Make](https://www.gnu.org/software/make/)
-- [(MAKE) BinUtils](https://www.gnu.org/software/binutils/)
 - [(MAKE) GZip](https://www.gnu.org/software/gzip/)
 
 
