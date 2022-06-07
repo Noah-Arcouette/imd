@@ -59,6 +59,7 @@ IMD is on the AUR at https://aur.archlinux.org/packages/imd-git.
 
 I Recommend using [Trizen](https://github.com/trizen/trizen) to download. ***Yay doesn't work***
 
+IMD is also on the [ChaoticAUR](https://github.com/chaotic-aur/packages).
 
 # Install
 
