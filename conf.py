@@ -136,9 +136,9 @@ class Style:
         elif self.fg == "bright cyan":
             out += "96"
         elif self.fg == "white":
-            out += "38"
+            out += "37"
         elif self.fg == "bright white":
-            out += "98"
+            out += "97"
         elif self.fg[0] == '#':
             out += '38;2;';
 
@@ -193,9 +193,9 @@ class Style:
         elif self.bg == "bright cyan":
             out += "106"
         elif self.bg == "white":
-            out += "48"
+            out += "47"
         elif self.bg == "bright white":
-            out += "108"
+            out += "107"
         elif self.bg[0] == '#':
             out += '48;2;';
 
