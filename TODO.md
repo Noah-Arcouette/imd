@@ -1,4 +1,6 @@
 - [/] Parse Configuration ( only default )
+  - [x] RGB Colors
+  - [x] ANSI Colors
   - [x] Parse JSON
   - [ ] Style Creator
   - [x] Rebuilding

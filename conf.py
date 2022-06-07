@@ -139,6 +139,22 @@ class Style:
             out += "38"
         elif self.fg == "bright white":
             out += "98"
+        elif self.fg[0] == '#':
+            out += '38;2;';
+
+            # 216 30 91
+            # d8  1e 5b
+
+            num = int(self.fg[1::], 16);
+
+            # R
+            out += str((num >> 16) & 0xff) + ';';
+
+            # G
+            out += str((num >> 8) & 0xff) + ';';
+
+            # B
+            out += str(num & 0xff);
         else:
             print(f"\x1b[1;31mError\x1b[0m: Unknown color `\x1b[1;35m{self.fg}\x1b[0m`.");
 
@@ -180,6 +196,22 @@ class Style:
             out += "48"
         elif self.bg == "bright white":
             out += "108"
+        elif self.bg[0] == '#':
+            out += '48;2;';
+
+            # 216 30 91
+            # d8  1e 5b
+
+            num = int(self.bg[1::], 16);
+
+            # R
+            out += str((num >> 16) & 0xff) + ';';
+
+            # G
+            out += str((num >> 8) & 0xff) + ';';
+
+            # B
+            out += str(num & 0xff);
         else:
             print(f"\x1b[1;31mError\x1b[0m: Unknown color `\x1b[1;35m{self.bg}\x1b[0m`.");
 

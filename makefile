@@ -1,7 +1,7 @@
 CFLAGS =
 CC     = cc -Wall -Wextra -I./inc -O2 -std=gnu11 ${CFLAGS}
 OUT    = ./bin/imd
-VER    = 2.4
+VER    = 2.5
 
 all: configure ${OUT}
 	${OUT} ./test.md

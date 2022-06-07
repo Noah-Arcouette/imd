@@ -152,6 +152,10 @@ char* style (char* data, struct Settings s)
         default:
           defs:
 
+          sz += sizeof(DEF_C);
+          out = realloc(out, sz);
+          strcat(out, DEF_C);
+
           if (flags & LINK)
             flags &= ~LINK;
 
