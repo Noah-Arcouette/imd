@@ -34,8 +34,9 @@ void menu (struct Settings *s)
     exit(0);
   }
 
-  printf("%s\n", files.strings[i]);
-
+  // copy selected file into s->file
+  s->file = realloc(s->file, (strlen(files.strings[i])+1) * sizeof(char));
+  strcpy(s->file, files.strings[i]);
 
   // free files
   if (files.size)
@@ -48,13 +49,6 @@ void menu (struct Settings *s)
     }
   }
   free(files.strings);
-
-  // default ***WILL CHANGE***
-  s->file = realloc(s->file, sizeof("./README.md"));
-  strcpy(s->file, "./README.md");
-
-  free(s->file);
-  exit(1);
 }
 
 ssize_t showMenu (struct StrArray files, struct Settings s)
