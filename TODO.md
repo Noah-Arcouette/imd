@@ -8,15 +8,15 @@
 - [x] Read File
 - [/] Menu ( Experimental ***DO NOT USE*** )
   - [x] Get All markdown files
-  - [ ] Show files / Pager
-    - [ ] Vim keys
+  - [/] Show files / Pager
+    - [x] Vim keys
     - [ ] Arrow keys
     - [ ] Mouse scroll
     - [ ] Page up / Page down
     - [ ] Commands
       - [ ] Search
-      - [ ] Goto end of file
-      - [ ] Goto start of file
+      - [ ] Goto end of selection
+      - [ ] Goto start of selection
     - [ ] Select
 - [x] Style
     - [x] Headers

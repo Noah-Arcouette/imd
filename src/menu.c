@@ -84,10 +84,23 @@ ssize_t showMenu (struct StrArray files, struct Settings s)
         printf(VBAR);
       }
 
-      printf(BOX_TEXT_C " %s\n", files.strings[i+offset]);
+      if ((i+offset) < files.size)
+      {
+        printf(BOX_TEXT_C " %s\n", files.strings[i+offset]);
+      }
     }
 
     c = keypress();
+
+    // parse keys
+    if ((c == 'w' || c == 'j') && offset)
+    {
+      offset--;
+    }
+    else if (c == 's' || c == 'k')
+    {
+      offset++;
+    }
   }
 
   printf(END);
