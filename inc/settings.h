@@ -6,6 +6,8 @@
 #define SETTINGS_FLAG_NO_DEC    0b0100
 #define SETTINGS_FLAG_NO_SYNTAX 0b1000
 
+#include "stddef.h"
+
 struct Settings
 {
   char* file;

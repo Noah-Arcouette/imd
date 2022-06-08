@@ -4,26 +4,40 @@
 #include "split.h"
 #include <stdio.h>
 #include <dirent.h>
+#include "chars.h"
+#include "conf.h"
+#include "settings.h"
+#include "useful.h"
 
 char *strcasestr (const char *, const char *);
 
-void addDir (char *, struct StrArray *);
+ssize_t showMenu (struct StrArray, struct Settings);
+void    addDir   (char *, struct StrArray *);
 
-void menu (char *path)
+
+void menu (struct Settings *s)
 {
   struct StrArray files;
   files.size = 0;
   files.strings = NULL;
 
-  addDir(path, &files);
+  // open all directories and subdirectories
+  // add markdown files to files
+  addDir(s->file, &files);
 
-  for (register size_t i = 0; i<files.size; i++)
+
+  ssize_t i = showMenu(files, *s);
+
+  if (i == -1)
   {
-    printf("%s\n", files.strings[i]);
+    free(s->file);
+    exit(0);
   }
 
+  printf("%s\n", files.strings[i]);
 
 
+  // free files
   if (files.size)
   {
     free(files.strings[0]);
@@ -35,11 +49,50 @@ void menu (char *path)
   }
   free(files.strings);
 
-  path = realloc(path, sizeof("./README.md"));
-  strcpy(path, "./README.md");
+  // default ***WILL CHANGE***
+  s->file = realloc(s->file, sizeof("./README.md"));
+  strcpy(s->file, "./README.md");
 
-  free(path);
+  free(s->file);
   exit(1);
+}
+
+ssize_t showMenu (struct StrArray files, struct Settings s)
+{
+  printf(DEF_C SETUP);
+
+  char c = 0;
+  size_t offset = 0;
+
+  s.win_rows--;
+
+  while (c != 'q')
+  {
+    printf(REFRESH);
+
+    // draw text
+    for (size_t i = 0; i<(s.win_rows/2) && (i+offset)<files.size; i++)
+    {
+      printf("\n " BOX_C);
+
+      if (!i)
+      {
+          printf(HBAR HBAR);
+      }
+      else
+      {
+        printf(VBAR);
+      }
+
+      printf(BOX_TEXT_C " %s\n", files.strings[i+offset]);
+    }
+
+    c = keypress();
+  }
+
+  printf(END);
+
+  return -1;
 }
 
 void addDir (char *path, struct StrArray *files)

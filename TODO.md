@@ -17,6 +17,7 @@
       - [ ] Search
       - [ ] Goto end of file
       - [ ] Goto start of file
+    - [ ] Select
 - [x] Style
     - [x] Headers
     - [x] Lists

@@ -17,7 +17,7 @@ char* reader (struct Settings *s)
   stat(s->file, &path_stat);
   if (!S_ISREG(path_stat.st_mode))
   {
-    menu(s->file);
+    menu(s);
   }
 
   // open file
