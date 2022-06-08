@@ -37,6 +37,8 @@ A checked box means it's fully implemented.
 
 Known bugs are in the `./BUGS.md` file.
 
+**Please report all bugs and ideas for imd in the issues page**
+
 
 # Configuration
 
