@@ -155,7 +155,7 @@ while (c != 'q')
   {
     offset = 0;
   }
-  else if ((c == 'j' || c == 'w') && offset > 0)
+  else if ((c == 'j' || c == 'w') && offset)
   {
     offset--;
   }
@@ -173,7 +173,7 @@ while (c != 'q')
       c = keypress();
 
       // up arrow
-      if (c == 0x41 && offset > 0)
+      if (c == 0x41 && offset)
       {
         offset--;
       }
@@ -209,7 +209,7 @@ while (c != 'q')
         offset++;
       }
       // mouse up
-      else if (c == 0x41 && offset > 0)
+      else if (c == 0x41 && offset)
       {
         offset--;
       }

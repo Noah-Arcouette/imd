@@ -10,13 +10,13 @@
   - [x] Get All markdown files
   - [/] Show files / Pager
     - [x] Vim keys
-    - [ ] Arrow keys
-    - [ ] Mouse scroll
-    - [ ] Page up / Page down
-    - [ ] Commands
+    - [x] Arrow keys
+    - [x] Mouse scroll
+    - [x] Page up / Page down
+    - [/] Commands
       - [ ] Search
-      - [ ] Goto end of selection
-      - [ ] Goto start of selection
+      - [x] Goto end of selection
+      - [x] Goto start of selection
     - [ ] Select
 - [x] Style
     - [x] Headers

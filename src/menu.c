@@ -101,6 +101,75 @@ ssize_t showMenu (struct StrArray files, struct Settings s)
     {
       offset++;
     }
+    else if (c == 'G')
+    {
+      if (files.size > (s.win_rows/2))
+      {
+        offset = files.size-(s.win_rows/2);
+
+        continue;
+      }
+
+      offset = 0;
+    }
+    else if (c == 'g')
+    {
+      offset = 0;
+    }
+    // special characters
+    else if (c == 0x1b)
+    {
+      c = keypress();
+
+      if (c == 0x5b)
+      {
+        c = keypress();
+
+        // up arrow
+        if (c == 0x41 && offset)
+        {
+          offset--;
+        }
+        // down arrow
+        else if (c == 0x42)
+        {
+          offset++;
+        }
+        // page up
+        else if (c == 0x35)
+        {
+          if (offset >= (s.win_rows/2))
+          {
+            offset -= (s.win_rows/2);
+          }
+          else
+          {
+            offset = 0;
+          }
+        }
+        // page down
+        else if (c == 0x36)
+        {
+          offset += (s.win_rows/2);
+        }
+      }
+      // mouse
+      else if (c == 0x4f)
+      {
+        c = keypress();
+
+        // mouse down
+        if (c == 0x42)
+        {
+          offset++;
+        }
+        // mouse up
+        else if (c == 0x41 && offset)
+        {
+          offset--;
+        }
+      }
+    }
   }
 
   printf(END);
