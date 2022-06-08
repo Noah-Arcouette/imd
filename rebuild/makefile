@@ -9,6 +9,8 @@ build:
 	${SRC}/reader.c \
 	${SRC}/settings.c \
 	${SRC}/split.c \
-	${SRC}/styling.c
+	${SRC}/styling.c \
+	${SRC}/useful.c \
+	${SRC}/menu.c
 
 	strip -s ${OUT}
