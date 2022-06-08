@@ -11,7 +11,7 @@ char* style (char* data, struct Settings s)
   unsigned int styleFlags = 0;
   unsigned int count = 0;
 
-  register char* out = malloc(sizeof(DEF_C));
+  register char* out = (char*)malloc(sizeof(DEF_C));
   register size_t sz = sizeof(DEF_C);
   strcpy(out, DEF_C);
 
@@ -51,7 +51,7 @@ char* style (char* data, struct Settings s)
           if (!(flags & (IDDONE | HEADER | SYNTAX)))
           {
             sz += sizeof(LIST_C "-" DEF_C);
-            out = realloc(out, sz);
+            out = (char*)realloc(out, sz);
             strcat(out, LIST_C "-" DEF_C);
 
             flags |= LIST;
@@ -68,7 +68,7 @@ char* style (char* data, struct Settings s)
           if (!(flags & (IDDONE | HEADER | SYNTAX)))
           {
             sz += sizeof(TAB_LIST_C ">" DEF_C);
-            out = realloc(out, sz);
+            out = (char*)realloc(out, sz);
             strcat(out, TAB_LIST_C ">" DEF_C);
 
             flags |= TAB;
@@ -87,7 +87,7 @@ char* style (char* data, struct Settings s)
             flags |= ALT | OVERRIDE;
 
             sz += sizeof(BRACKETS_C "[\x1b[0m");
-            out = realloc(out, sz);
+            out = (char*)realloc(out, sz);
             strcat(out, BRACKETS_C "[\x1b[0m");
 
             continue;
@@ -103,7 +103,7 @@ char* style (char* data, struct Settings s)
             flags |= OVERRIDE;
 
             sz += sizeof(BRACKETS_C "(\x1b[0m");
-            out = realloc(out, sz);
+            out = (char*)realloc(out, sz);
             strcat(out, BRACKETS_C "(\x1b[0m");
 
             continue;
@@ -120,7 +120,7 @@ char* style (char* data, struct Settings s)
           if (!(flags & (IDDONE | HEADER | SYNTAX)))
           {
             sz += sizeof(UNDERLINE_C);
-            out = realloc(out, sz);
+            out = (char*)realloc(out, sz);
             strcat(out, UNDERLINE_C);
 
             flags |= UNDERLINE;
@@ -153,7 +153,7 @@ char* style (char* data, struct Settings s)
           defs:
 
           sz += sizeof(DEF_C);
-          out = realloc(out, sz);
+          out = (char*)realloc(out, sz);
           strcat(out, DEF_C);
 
           if (flags & LINK)
@@ -171,26 +171,26 @@ char* style (char* data, struct Settings s)
             if (count == 1)
             {
               sz += sizeof(H1_C);
-              out = realloc(out, sz);
+              out = (char*)realloc(out, sz);
               strcat(out, H1_C);
             }
             else if (count == 2)
             {
               sz += sizeof(H2_C);
-              out = realloc(out, sz);
+              out = (char*)realloc(out, sz);
               strcat(out, H2_C);
             }
             else
             {
               sz += sizeof(H3_C);
-              out = realloc(out, sz);
+              out = (char*)realloc(out, sz);
               strcat(out, H3_C);
             }
           }
           else if (flags & LIST || flags & TAB)
           {
             sz += sizeof(DEF_C);
-            out = realloc(out, sz);
+            out = (char*)realloc(out, sz);
             strcat(out, DEF_C);
           }
 
@@ -199,19 +199,19 @@ char* style (char* data, struct Settings s)
             if (count == 1)
             {
               sz += sizeof(ITALIC_C);
-              out = realloc(out, sz);
+              out = (char*)realloc(out, sz);
               strcat(out, ITALIC_C);
             }
             else if (count == 2)
             {
               sz += sizeof(BOLD_C);
-              out = realloc(out, sz);
+              out = (char*)realloc(out, sz);
               strcat(out, BOLD_C);
             }
             else if (count == 3)
             {
               sz += sizeof(BOLD_ITALIC_C);
-              out = realloc(out, sz);
+              out = (char*)realloc(out, sz);
               strcat(out, BOLD_ITALIC_C);
             }
 
@@ -232,7 +232,7 @@ char* style (char* data, struct Settings s)
       else if (data[i] == ']' && flags & ALT)
       {
         sz += sizeof(BRACKETS_C "]\x1b[0m");
-        out = realloc(out, sz);
+        out = (char*)realloc(out, sz);
         strcat(out, BRACKETS_C "]\x1b[0m");
 
         flags = LINK;
@@ -242,7 +242,7 @@ char* style (char* data, struct Settings s)
       else if (data[i] == ')' && !(flags & ALT))
       {
         sz += sizeof(BRACKETS_C ")\x1b[0m");
-        out = realloc(out, sz);
+        out = (char*)realloc(out, sz);
         strcat(out, BRACKETS_C ")\x1b[0m");
 
         flags = 0;
@@ -258,7 +258,7 @@ char* style (char* data, struct Settings s)
       else if (count == 0 && flags & ITAL)
       {
         sz += sizeof("\x1b[0m");
-        out = realloc(out, sz);
+        out = (char*)realloc(out, sz);
         strcat(out, "\x1b[0m");
 
         flags = 0;
@@ -266,13 +266,13 @@ char* style (char* data, struct Settings s)
       else if (flags & ALT)
       {
         sz += sizeof(ALT_C);
-        out = realloc(out, sz);
+        out = (char*)realloc(out, sz);
         strcat(out, ALT_C);
       }
       else if (flags & LINK)
       {
         sz += sizeof(LINK_C);
-        out = realloc(out, sz);
+        out = (char*)realloc(out, sz);
         strcat(out, LINK_C);
       }
 
@@ -287,7 +287,7 @@ char* style (char* data, struct Settings s)
             i--;
 
             sz += sizeof(SYNTAX_C);
-            out = realloc(out, sz);
+            out = (char*)realloc(out, sz);
             strcat(out, SYNTAX_C);
 
             continue;
@@ -296,7 +296,7 @@ char* style (char* data, struct Settings s)
         flags = 0;
         count = 0;
         sz += sizeof(DEF_C);
-        out = realloc(out, sz);
+        out = (char*)realloc(out, sz);
         strcat(out, DEF_C);
       }
     }
@@ -310,7 +310,7 @@ char* style (char* data, struct Settings s)
       if (data[i-1] != '\\' && data[i] == '`')
       {
         sz += sizeof(DEF_C);
-        out = realloc(out, sz);
+        out = (char*)realloc(out, sz);
         strcat(out, DEF_C);
 
         count--;
@@ -318,7 +318,7 @@ char* style (char* data, struct Settings s)
       else if (data[i] == '\n')
       {
         sz += sizeof("\n" SYNTAX_C);
-        out = realloc(out, sz);
+        out = (char*)realloc(out, sz);
         strcat(out, "\n" SYNTAX_C);
 
         continue;
@@ -331,7 +331,8 @@ char* style (char* data, struct Settings s)
       }
     }
 
-    out = realloc(out, ++sz);
+    sz += 1 * sizeof(char);
+    out = (char*)realloc(out, sz);
     strncat(out, &data[i], 1);
   }
 

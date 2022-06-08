@@ -24,7 +24,7 @@ else
       styleFlags &= ~STYLE | ~STRING;
 
       sz += sizeof(SYNTAX_C);
-      out = realloc(out, sz);
+      out = (char*)realloc(out, sz);
       strcat(out, SYNTAX_C);
 
       break;
@@ -40,7 +40,7 @@ else
     case '9':
     case '.':
       sz += sizeof(NUMBER_C);
-      out = realloc(out, sz);
+      out = (char*)realloc(out, sz);
       strcat(out, NUMBER_C);
 
       styleFlags |= STYLE;
@@ -67,7 +67,7 @@ else
     case '<':
     case '>':
       sz += sizeof(OPERATOR_C);
-      out = realloc(out, sz);
+      out = (char*)realloc(out, sz);
       strcat(out, OPERATOR_C);
 
       styleFlags |= STYLE;
@@ -77,7 +77,7 @@ else
     case '"':
     case '`':
       sz += sizeof(STRING_C);
-      out = realloc(out, sz);
+      out = (char*)realloc(out, sz);
       strcat(out, STRING_C);
 
       styleFlags |= STYLE | STRING;
@@ -90,7 +90,7 @@ else
     case '(':
     case ')':
       sz += sizeof(BRACKET_C);
-      out = realloc(out, sz);
+      out = (char*)realloc(out, sz);
       strcat(out, BRACKET_C);
 
       styleFlags |= STYLE;
@@ -98,7 +98,7 @@ else
       break;
     default:
       sz += sizeof(SYNTAX_C);
-      out = realloc(out, sz);
+      out = (char*)realloc(out, sz);
       strcat(out, SYNTAX_C);
 
       styleFlags &= ~STYLE | ~STRING;

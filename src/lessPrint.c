@@ -10,7 +10,7 @@ if (!(s.flags & SETTINGS_FLAG_NO_DEC))
   s.win_rows -= 1;
 }
 
-char* buff = malloc(s.win_cols);
+char* buff = (char*)malloc(s.win_cols * sizeof(char));
 
 for (size_t i = 0; i<s.win_cols; i++)
 {

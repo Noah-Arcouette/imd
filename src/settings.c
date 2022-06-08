@@ -13,7 +13,7 @@ struct Settings getSet (const int argc, const char** argv)
   register struct Settings s;
   s.flags = 0;
 
-  s.file = NULL;
+  s.file = (char*)NULL;
 
   // get window size
   struct winsize w;
@@ -30,7 +30,7 @@ struct Settings getSet (const int argc, const char** argv)
   else
   {
     // set default filename
-    s.file = malloc(sizeof("./README.md"));
+    s.file = (char*)malloc(sizeof("./README.md"));
     strcpy(s.file, "./README.md");
   }
 
@@ -53,7 +53,7 @@ struct Settings getSet (const int argc, const char** argv)
       }
       else if (!strcmp(argv[i], "--help"))
       {
-        s.file = realloc(s.file, sizeof("/etc/imd/man.md"));
+        s.file = (char*)realloc(s.file, sizeof("/etc/imd/man.md"));
         strcpy(s.file, "/etc/imd/man.md");
       }
       else if (!strcmp(argv[i], "--version"))
@@ -88,7 +88,7 @@ struct Settings getSet (const int argc, const char** argv)
 
             break;
           case 'h':
-            s.file = realloc(s.file, sizeof("/etc/imd/man.md"));
+            s.file = (char*)realloc(s.file, sizeof("/etc/imd/man.md"));
             strcpy(s.file, "/etc/imd/man.md");
 
             break;
@@ -104,9 +104,9 @@ struct Settings getSet (const int argc, const char** argv)
     }
     else
     {
-      s.file = realloc(s.file,
-        (strlen(argv[i])+1)*
-        sizeof(char)
+      s.file = (char*)realloc(s.file,
+        (strlen(argv[i])+1)
+        *sizeof(char)
       );
       strcpy(s.file, argv[i]);
     }

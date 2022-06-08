@@ -47,19 +47,19 @@ char* reader (struct Settings *s)
   }
 
   // line
-  char* line = NULL;
+  char* line = (char*)NULL;
   size_t len = 0;
   ssize_t size;
 
   // output data
-  register char* data = malloc(1 * sizeof(char));
-  data[0] = 0;
+  register char* data = (char*)malloc(1 * sizeof(char));
+  data[0] = (char)0;
   register size_t datasz = 1;
 
   // read lines
   while ((size = getline(&line, &len, fp)) != -1) {
     datasz += size;
-    data = realloc(data, datasz * sizeof(char));
+    data = (char*)realloc(data, datasz * sizeof(char));
     strcat(data, line);
   }
 

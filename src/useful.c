@@ -27,7 +27,7 @@ char keypress ()
 	new.c_lflag &= ~ECHO;
 	tcsetattr(0, TCSANOW, &new);
 
-	c = getc(stdin);
+	c = (char)getc(stdin);
 
 	tcsetattr(0, TCSANOW, &old);
 
@@ -37,10 +37,10 @@ char keypress ()
 // check if string is a number
 int isNum (char* data)
 {
-  if (data[0] == 0 || data[0] == ' ')
+  if (data[0] == (char)0 || data[0] == ' ')
     return 0;
 
-  for (size_t i = 0; data[i]!=0 && data[i]!=' '; i++)
+  for (size_t i = 0; data[i]!=(char)0 && data[i]!=' '; i++)
   {
     if (data[i] < '0' || data[i] > '9')
       return 0;
@@ -54,7 +54,7 @@ int toNum (char* data)
 {
   int out = 0;
 
-  for (size_t i = 0; data[i]!=0 && data[i]!=' '; i++)
+  for (size_t i = 0; data[i]!=(char)0 && data[i]!=' '; i++)
   {
       out *= 10;
       out += data[i] - '0';

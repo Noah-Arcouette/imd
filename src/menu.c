@@ -35,7 +35,7 @@ void menu (struct Settings *s)
   }
 
   // copy selected file into s->file
-  s->file = realloc(s->file, (strlen(files.strings[i])+1) * sizeof(char));
+  s->file = (char*)realloc(s->file, (strlen(files.strings[i])+1) * sizeof(char));
   strcpy(s->file, files.strings[i]);
 
   // free files
@@ -190,7 +190,7 @@ void addDir (char *path, struct StrArray *files)
   if (pDir == NULL)
     return;
 
-  char *hold = NULL;
+  char *hold = (char*)NULL;
 
   while ((pDirent = readdir(pDir)) != NULL)
   {
@@ -199,7 +199,7 @@ void addDir (char *path, struct StrArray *files)
 
     if (pDirent->d_type == DT_DIR)
     {
-      hold = realloc(hold, (strlen(path) + strlen(pDirent->d_name) + 2) * sizeof(char));
+      hold = (char*)realloc(hold, (strlen(path) + strlen(pDirent->d_name) + 2) * sizeof(char));
       strcpy(hold, path);
       strcat(hold, "/");
       strcat(hold, pDirent->d_name);
@@ -209,8 +209,8 @@ void addDir (char *path, struct StrArray *files)
     else if (pDirent->d_type == DT_REG && strcasestr(pDirent->d_name, ".md"))
     {
       files->size++;
-      files->strings = realloc(files->strings, files->size * sizeof(char*));
-      files->strings[files->size-1] = malloc(strlen(path) + strlen(pDirent->d_name) + 2);
+      files->strings = (char**)realloc(files->strings, files->size * sizeof(char*));
+      files->strings[files->size-1] = (char*)malloc((strlen(path) + strlen(pDirent->d_name) + 2) * sizeof(char));
 
       strcpy(files->strings[files->size-1], path);
       strcat(files->strings[files->size-1], "/");
