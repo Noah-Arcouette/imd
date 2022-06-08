@@ -2,21 +2,33 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 #include "settings.h"
 #include "reader.h"
 #include "conf.h"
+#include "menu.h"
 
-char* reader (struct Settings s)
+char* reader (struct Settings *s)
 {
+  // test if file is a directory
+  // if directory run menu then reset s.file
+  struct stat path_stat;
+  stat(s->file, &path_stat);
+  if (!S_ISREG(path_stat.st_mode))
+  {
+    menu(s->file);
+  }
+
   // open file
   register FILE *fp;
-  if (s.flags & SETTINGS_FLAG_PIPE)
+  if (s->flags & SETTINGS_FLAG_PIPE)
   {
     fp = stdin;
   }
   else
   {
-    fp = fopen(s.file, "r");
+    fp = fopen(s->file, "r");
   }
 
   // check if file opened
@@ -27,10 +39,10 @@ char* reader (struct Settings s)
       DEF_C ": Cannot open file `"
       HIGHLIGHT_C "%s"
       DEF_C "'.\x1b[0m\n",
-      s.file
+      s->file
     );
 
-    free(s.file);
+    free(s->file);
     exit(1);
   }
 
@@ -55,7 +67,7 @@ char* reader (struct Settings s)
   fclose(fp);
 
   // swap stdin to a tty is piped
-  if (s.flags & SETTINGS_FLAG_PIPE)
+  if (s->flags & SETTINGS_FLAG_PIPE)
   {
     freopen("/dev/tty", "r", stdin);
   }

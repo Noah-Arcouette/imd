@@ -90,7 +90,7 @@ int main (const int argc, const char** argv)
   struct Settings s = getSet(argc, argv);
 
   // read file
-  char* data = reader(s);
+  char* data = reader(&s);
 
   // style data
   register char* out = style(data, s);

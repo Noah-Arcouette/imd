@@ -6,7 +6,7 @@
   - [x] Rebuilding
 - [x] Parse Arguments
 - [x] Read File
-- [ ] Menu
+- [/] Menu
   - [ ] Open All markdown files
   - [ ] Key selection
 - [x] Style

@@ -7,7 +7,7 @@ all: configure ${OUT}
 	${OUT} ./test.md
 
 test: configure ${OUT}
-	${OUT} ./README.md
+	${OUT} .
 
 configure:
 	# Make binaries directories
@@ -59,7 +59,7 @@ uninstall:
 
 
 # Files
-${OUT}: ./obj/split.o ./obj/main.o ./obj/settings.o ./obj/reader.o ./obj/styling.o
+${OUT}: ./obj/menu.o ./obj/split.o ./obj/main.o ./obj/settings.o ./obj/reader.o ./obj/styling.o
 	${CC} -o ${OUT} ./obj/*.o
 
 ./obj/main.o: ./src/main.c ./src/lessPrint.c ./src/rawPrint.c
@@ -76,3 +76,6 @@ ${OUT}: ./obj/split.o ./obj/main.o ./obj/settings.o ./obj/reader.o ./obj/styling
 
 ./obj/split.o: ./src/split.c
 	${CC} -c -o ./obj/split.o ./src/split.c
+
+./obj/menu.o: ./src/menu.c
+	${CC} -c -o ./obj/menu.o ./src/menu.c
