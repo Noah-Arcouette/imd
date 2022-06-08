@@ -7,8 +7,16 @@
 - [x] Parse Arguments
 - [x] Read File
 - [/] Menu ( Experimental ***DO NOT USE*** )
-  - [ ] Open All markdown files
-  - [ ] Key selection
+  - [x] Get All markdown files
+  - [ ] Show files / Pager
+    - [ ] Vim keys
+    - [ ] Arrow keys
+    - [ ] Mouse scroll
+    - [ ] Page up / Page down
+    - [ ] Commands
+      - [ ] Search
+      - [ ] Goto end of file
+      - [ ] Goto start of file
 - [x] Style
     - [x] Headers
     - [x] Lists

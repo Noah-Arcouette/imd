@@ -75,6 +75,7 @@ void addDir (char *path, struct StrArray *files)
       files->size++;
       files->strings = realloc(files->strings, files->size * sizeof(char*));
       files->strings[files->size-1] = malloc(strlen(path) + strlen(pDirent->d_name) + 2);
+
       strcpy(files->strings[files->size-1], path);
       strcat(files->strings[files->size-1], "/");
       strcat(files->strings[files->size-1], pDirent->d_name);
