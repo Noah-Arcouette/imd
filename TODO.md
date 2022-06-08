@@ -17,7 +17,7 @@
       - [ ] Search
       - [x] Goto end of selection
       - [x] Goto start of selection
-    - [ ] Select
+    - [x] Select
 - [x] Style
     - [x] Headers
     - [x] Lists

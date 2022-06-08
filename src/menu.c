@@ -97,6 +97,13 @@ ssize_t showMenu (struct StrArray files, struct Settings s)
     {
       offset--;
     }
+    // enter key
+    else if (c == 0x0a)
+    {
+      printf(END);
+
+      return offset;
+    }
     else if (c == 's' || c == 'k')
     {
       offset++;
