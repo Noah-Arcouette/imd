@@ -25,9 +25,9 @@ struct StrArray split (char* data)
       continue;
     }
 
-    sa.strings[sa.size-1] = (char**)realloc(
+    sa.strings[sa.size-1] = (char*)realloc(
       sa.strings[sa.size-1],
-      ++csz * sizeof(char*)
+      ++csz * sizeof(char)
     );
     strncat(sa.strings[sa.size-1], &data[i], 1);
   }
