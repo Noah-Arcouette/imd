@@ -59,7 +59,7 @@ uninstall:
 
 
 # Files
-${OUT}: ./obj/menu.o ./obj/split.o ./obj/main.o ./obj/settings.o ./obj/reader.o ./obj/styling.o
+${OUT}: ./obj/useful.o ./obj/menu.o ./obj/split.o ./obj/main.o ./obj/settings.o ./obj/reader.o ./obj/styling.o
 	${CC} -o ${OUT} ./obj/*.o
 
 ./obj/main.o: ./src/main.c ./src/lessPrint.c ./src/rawPrint.c
@@ -79,3 +79,6 @@ ${OUT}: ./obj/menu.o ./obj/split.o ./obj/main.o ./obj/settings.o ./obj/reader.o 
 
 ./obj/menu.o: ./src/menu.c
 	${CC} -c -o ./obj/menu.o ./src/menu.c
+
+./obj/useful.o: ./src/useful.c
+	${CC} -c -o ./obj/useful.o ./src/useful.c
