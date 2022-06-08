@@ -1,5 +1,5 @@
 CFLAGS =
-CC     = cc -Wall -Wextra -I./inc -O2 -std=gnu11 ${CFLAGS}
+CC     = cc -Wall -Wextra -I./inc -O2 -std=gnu18 ${CFLAGS}
 OUT    = ./bin/imd
 VER    = 2.5
 
