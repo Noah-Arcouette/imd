@@ -15,7 +15,7 @@ char* reader (struct Settings *s)
   // if directory run menu then reset s.file
   struct stat path_stat;
   stat(s->file, &path_stat);
-  if (!S_ISREG(path_stat.st_mode))
+  if (S_ISDIR(path_stat.st_mode))
   {
     menu(s);
   }
