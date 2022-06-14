@@ -1,0 +1,37 @@
+#!/bin/sh
+
+OUT=./bin/imd
+CFLAGS=
+
+if [ -n "$1" ]
+then
+  CFLAGS=$1
+fi
+
+echo "Cleaning files..."
+
+make clean
+
+echo "Building..."
+
+make build OUT="$OUT" CFLAGS="$CFLAGS"
+
+echo "Installing..."
+
+sudo cp $OUT /usr/bin/imd
+
+sudo mkdir -p /etc/imd/
+sudo mkdir -p /etc/imd/src/
+sudo cp ./doc/* /etc/imd/
+
+sudo cp ./imd.1.gz /usr/share/man/man1/imd.1.gz
+
+sudo cp ./src/* /etc/imd/src
+sudo cp ./inc/* /etc/imd/src
+sudo cp ./LICENSE.TXT /etc/imd
+
+sudo cp ./rebuild/makefile /etc/imd/
+
+sudo cp ./rebuild/imd-rebuild /usr/bin/imd-rebuild
+
+echo "Done"

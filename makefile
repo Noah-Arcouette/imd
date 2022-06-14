@@ -33,23 +33,6 @@ build: configure ${OUT}
 
 	gzip imd.1 -k
 
-install: clean build
-	cp ${OUT} /usr/bin/imd
-
-	mkdir -p /etc/imd/
-	mkdir -p /etc/imd/src/
-	cp ./doc/* /etc/imd/
-
-	cp ./imd.1.gz /usr/share/man/man1/imd.1.gz
-
-	cp ./src/* /etc/imd/src
-	cp ./inc/* /etc/imd/src
-	cp ./LICENSE.TXT /etc/imd
-
-	cp ./rebuild/makefile /etc/imd/
-
-	cp ./rebuild/imd-rebuild /usr/bin/imd-rebuild
-
 uninstall:
 	rm /usr/bin/imd
 	rm /usr/bin/imd-rebuild

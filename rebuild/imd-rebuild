@@ -9,3 +9,6 @@ sudo make -f /etc/imd/makefile CFLAGS="$1"
 
 
 printf "\nDone.\n"
+
+printf "C Flags \`$1\'\n"
+ls -sh /usr/bin/imd

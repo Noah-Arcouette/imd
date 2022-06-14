@@ -65,7 +65,7 @@ IMD is also on the [ChaoticAUR](https://github.com/chaotic-aur/packages).
 
 # Install
 
-Run `sudo make install` it will
+Run `./install` it will
 
  - Clean previous build
  - Rebuild all files
