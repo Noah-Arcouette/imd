@@ -155,11 +155,11 @@ while (c != 'q')
   {
     offset = 0;
   }
-  else if ((c == 'j' || c == 'w') && offset)
+  else if ((c == 'k' || c == 'w') && offset)
   {
     offset--;
   }
-  else if ((c == 'k' || c == 's'))
+  else if ((c == 'j' || c == 's'))
   {
     offset++;
   }

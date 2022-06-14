@@ -87,7 +87,7 @@ ssize_t showMenu (struct StrArray files, struct Settings s)
     c = keypress();
 
     // parse keys
-    if ((c == 'w' || c == 'j') && offset)
+    if ((c == 'w' || c == 'k') && offset)
     {
       offset--;
     }
@@ -98,7 +98,7 @@ ssize_t showMenu (struct StrArray files, struct Settings s)
 
       return offset;
     }
-    else if (c == 's' || c == 'k')
+    else if (c == 's' || c == 'j')
     {
       offset++;
     }
