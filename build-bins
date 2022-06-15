@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd builds
+
+echo "Building Arch Binaries..."
+
+makepkg --clean
+
+echo "Done."

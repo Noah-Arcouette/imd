@@ -29,7 +29,7 @@ sha256sums=(
 
 pkgver () {
 	cd "imd"
-	printf "${pkgver}.%s" "$(git rev-list --count --all)"
+	printf "2.6.%s" "$(git rev-list --count --all)"
 }
 
 build () {

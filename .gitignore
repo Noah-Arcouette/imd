@@ -21,4 +21,3 @@ inc/vinfo.h
 builds/imd/
 builds/pkg/
 builds/src/
-builds/*.pkg*
