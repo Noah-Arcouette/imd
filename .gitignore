@@ -14,3 +14,11 @@ inc/vinfo.h
 # Compressed
 
 *.gz
+
+# builds
+## Arch
+
+builds/imd/
+builds/pkg/
+builds/src/
+builds/*.pkg*
