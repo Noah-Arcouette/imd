@@ -40,8 +40,15 @@ uninstall:
 
 	rm /usr/share/man/man1/imd.1.gz
 
-build-bins: clean build
+push: clean build
+	git push origin master
+
 	./build-bins
+
+	git add .
+	git commit -m "AUTO-COMMIT: building builds"
+
+	git push origin master
 
 # Files
 ${OUT}: ./obj/useful.o ./obj/menu.o ./obj/split.o ./obj/main.o ./obj/settings.o ./obj/reader.o ./obj/styling.o
