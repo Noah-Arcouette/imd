@@ -43,3 +43,5 @@
     - [ ] Goto header
     - [x] Goto end of file
     - [x] Goto start of file
+
+# Merge imd-git AUR with imd
