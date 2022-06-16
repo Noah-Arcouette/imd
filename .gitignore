@@ -21,3 +21,8 @@ inc/vinfo.h
 builds/imd/
 builds/pkg/
 builds/src/
+builds/PKGBUILD
+
+## Debian
+
+builds/imd*/

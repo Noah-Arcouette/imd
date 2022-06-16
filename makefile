@@ -40,7 +40,7 @@ uninstall:
 
 	rm /usr/share/man/man1/imd.1.gz
 
-build-bins:
+build-bins: clean build
 	./build-bins
 
 # Files
