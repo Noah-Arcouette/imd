@@ -1,6 +1,6 @@
 pkgbase="imd"
 pkgname="imd"
-pkgver=2.6.101
+pkgver=2.6.106
 pkgrel=1
 pkgdesc="Improved MarkDown Reader"
 
