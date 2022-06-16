@@ -127,7 +127,7 @@ echo "Making control file."
 cat <<EOF > ./$DPKG/DEBIAN/control
 Package: imd
 Version: $VERSION
-Architecture: any
+Architecture: amd64
 Maintainer: Noah Arcouette
 Description: Improved Markdown Reader
 Depends: gcc, make, binutils
