@@ -10,6 +10,7 @@ test/
 *.test
 inc/conf.h
 inc/vinfo.h
+pkg/
 
 # Compressed
 

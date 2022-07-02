@@ -63,6 +63,7 @@ I Recommend using [Trizen](https://github.com/trizen/trizen) to download. ***Yay
 
 IMD is also on the [ChaoticAUR](https://github.com/chaotic-aur/packages).
 
+
 # Install
 
 Run `./install` it will
@@ -71,6 +72,21 @@ Run `./install` it will
  - Rebuild all files
  - Strip and zip files
  - Install binaries and data
+
+
+# Pre-Built
+
+Uncompress the 7z archive with.
+
+`7z x ./imd.7z -o./pkg && cd ./pkg`
+
+Install with.
+
+`./.INT`
+
+Or statically with.
+
+`./.SINT`
 
 
 # Uninstall
