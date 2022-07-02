@@ -74,19 +74,9 @@ Run `./install` it will
  - Install binaries and data
 
 
-# Pre-Built ( Doesn't need git clone ) ( Only need 7z and curl )
+# Pre-Built Dependency Free ( Doesn't need a git clone ) ( Only needs 7z and curl, which can be uninstalled after )
 
-Get archive.
-
-`curl https://raw.githubusercontent.com/Noah-Arcouette/imd/master/imd.7z -o ./imd.7z`
-
-Uncompress the 7z archive with.
-
-`7z x ./imd.7z -o./pkg && cd ./pkg`
-
-Install with.
-
-`./.INT`
+`curl https://raw.githubusercontent.com/Noah-Arcouette/imd/master/net | sh`
 
 
 # Uninstall

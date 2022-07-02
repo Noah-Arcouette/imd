@@ -1,0 +1,25 @@
+#!/bin/sh
+
+echo "Downloading..."
+
+curl https://raw.githubusercontent.com/Noah-Arcouette/imd/master/imd.7z -o ./imd.7z
+
+
+echo "Uncompressing..."
+
+7z x ./imd.7z -o./pkg && cd ./pkg
+
+
+echo "Installing..."
+
+./.INT
+
+cd ..
+
+
+echo "Cleaning up..."
+
+rm -rf ./pkg/ ./imd.7z
+
+
+echo "Installed"
