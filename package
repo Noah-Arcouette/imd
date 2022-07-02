@@ -17,7 +17,7 @@ make build CFLAGS="-static"
 echo "Making package..."
 
 mkdir $DIR/usr/bin/ -p
-mkdir $DIR/etc/imd/src/ -p
+mkdir $DIR/etc/imd/ -p
 mkdir $DIR/usr/share/man/man1/ -p
 
 cp ./bin/imd $DIR/usr/bin/imd
@@ -25,13 +25,9 @@ cp ./bin/imd $DIR/usr/bin/imd
 cp ./doc/* $DIR/etc/imd/
 cp ./imd.1.gz $DIR/usr/share/man/man1/imd.1.gz
 
-cp ./src/* $DIR/etc/imd/src/
-cp ./inc/* $DIR/etc/imd/src/
 cp ./LICENSE.TXT $DIR/etc/imd/LICENSE
 
 cp ./rebuild/makefile $DIR/etc/imd/makefile
-
-cp ./rebuild/imd-rebuild $DIR/usr/bin/imd-rebuild
 
 
 echo "Generating hashes..."
@@ -39,9 +35,8 @@ echo "Generating hashes..."
 cd $DIR
 
 sha256sum -b \
-./etc/imd/src/* \
-./etc/imd/LICENSE ./etc/imd/makefile ./etc/imd/man.md \
-./usr/bin/imd ./usr/bin/imd-rebuild \
+./etc/imd/LICENSE ./etc/imd/man.md \
+./usr/bin/imd \
 ./usr/share/man/man1/imd.1.gz > ./.HASH
 
 cd ..
@@ -49,31 +44,16 @@ cd ..
 
 echo "Creating install script..."
 
-cat <<EOF > $DIR/.SINT
-#!/bin/sh
-
-if [ "\$(sha256sum -c .HASH)" ]
-then
-	sudo cp * / -rv
-
-	echo "Installed!"
-
-	exit 0
-fi
-
-echo "Hash check faild!"
-
-exit 1
-EOF
-
 cat <<EOF > $DIR/.INT
 #!/bin/sh
 
+echo "Installing no dependancy IMD."
+
+echo "Running sha256 sum check..."
+
 if [ "\$(sha256sum -c .HASH)" ]
 then
 	sudo cp * / -rv
-
-	imd-rebuild
 
 	echo "Installed!"
 
@@ -86,7 +66,6 @@ exit 1
 EOF
 
 chmod a+x $DIR/.INT
-chmod a+x $DIR/.SINT
 
 
 echo "Compressing..."

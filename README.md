@@ -74,7 +74,7 @@ Run `./install` it will
  - Install binaries and data
 
 
-# Pre-Built ( Doesn't need git clone )
+# Pre-Built ( Doesn't need git clone ) ( Only need 7z and curl )
 
 Get archive.
 
@@ -87,10 +87,6 @@ Uncompress the 7z archive with.
 Install with.
 
 `./.INT`
-
-Or statically with.
-
-`./.SINT`
 
 
 # Uninstall
