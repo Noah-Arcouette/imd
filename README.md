@@ -74,7 +74,7 @@ Run `./install` it will
  - Install binaries and data
 
 
-# Pre-Built
+# Pre-Built ( Doesn't need git clone )
 
 Get archive.
 
