@@ -40,6 +40,16 @@ uninstall:
 
 	rm /usr/share/man/man1/imd.1.gz
 
+push: clean build
+	./package
+
+	git add .
+
+	git commit
+
+	git push
+
+
 # Files
 ${OUT}: ./obj/useful.o ./obj/menu.o ./obj/split.o ./obj/main.o ./obj/settings.o ./obj/reader.o ./obj/styling.o
 	${CC} -o ${OUT} ./obj/*.o
