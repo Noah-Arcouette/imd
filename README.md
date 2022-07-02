@@ -76,6 +76,10 @@ Run `./install` it will
 
 # Pre-Built
 
+Get archive.
+
+`curl https://raw.githubusercontent.com/Noah-Arcouette/imd/master/imd.7z -o ./imd.7z`
+
 Uncompress the 7z archive with.
 
 `7z x ./imd.7z -o./pkg && cd ./pkg`
